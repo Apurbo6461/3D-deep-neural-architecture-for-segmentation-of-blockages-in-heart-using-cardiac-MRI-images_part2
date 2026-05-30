@@ -1,0 +1,98 @@
+================================================================================
+COMPREHENSIVE BLOCKAGE DETECTION AND SEGMENTATION PIPELINE
+================================================================================
+
+Thesis: An efficient 3D deep neural architecture for segmentation
+        of blockages in heart using cardiac MRI images
+================================================================================
+Using device: mps
+✓ Loaded 3D U-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_3d_u-net.pth
+✓ Loaded V-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_v-net.pth
+✓ Loaded ResAtt-3D-U-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_resatt-3d-u-net.pth
+
+================================================================================
+COMPREHENSIVE BLOCKAGE ANALYSIS PIPELINE
+================================================================================
+
+Test samples: 100
+Analyzing samples:   0%|          | 0/100 [00:00<?, ?it/s]Analyzing samples:   1%|          | 1/100 [00:21<35:23, 21.45s/it]Analyzing samples:   2%|▏         | 2/100 [00:39<32:03, 19.62s/it]Analyzing samples:   3%|▎         | 3/100 [01:06<37:09, 22.98s/it]Analyzing samples:   4%|▍         | 4/100 [01:33<39:04, 24.42s/it]Analyzing samples:   5%|▌         | 5/100 [01:56<37:41, 23.81s/it]Analyzing samples:   6%|▌         | 6/100 [02:20<37:28, 23.92s/it]Analyzing samples:   7%|▋         | 7/100 [03:09<50:03, 32.30s/it]Analyzing samples:   8%|▊         | 8/100 [03:39<48:09, 31.40s/it]Analyzing samples:   9%|▉         | 9/100 [04:57<1:09:48, 46.03s/it]Analyzing samples:  10%|█         | 10/100 [05:57<1:15:39, 50.43s/it]Analyzing samples:  11%|█         | 11/100 [06:31<1:07:21, 45.41s/it]Analyzing samples:  12%|█▏        | 12/100 [07:01<59:24, 40.50s/it]  Analyzing samples:  13%|█▎        | 13/100 [07:19<49:07, 33.88s/it]Analyzing samples:  14%|█▍        | 14/100 [07:38<41:52, 29.22s/it]Analyzing samples:  15%|█▌        | 15/100 [08:03<39:56, 28.20s/it]Analyzing samples:  16%|█▌        | 16/100 [08:31<39:08, 27.96s/it]Analyzing samples:  17%|█▋        | 17/100 [08:51<35:12, 25.45s/it]Analyzing samples:  18%|█▊        | 18/100 [09:06<30:52, 22.59s/it]Analyzing samples:  19%|█▉        | 19/100 [09:25<28:45, 21.30s/it]Analyzing samples:  20%|██        | 20/100 [09:44<27:29, 20.62s/it]Analyzing samples:  21%|██        | 21/100 [10:07<28:15, 21.46s/it]Analyzing samples:  22%|██▏       | 22/100 [10:30<28:35, 22.00s/it]Analyzing samples:  23%|██▎       | 23/100 [11:01<31:34, 24.61s/it]Analyzing samples:  24%|██▍       | 24/100 [11:31<33:03, 26.10s/it]Analyzing samples:  25%|██▌       | 25/100 [11:53<31:19, 25.06s/it]Analyzing samples:  26%|██▌       | 26/100 [12:14<29:21, 23.80s/it]Analyzing samples:  27%|██▋       | 27/100 [12:45<31:27, 25.86s/it]Analyzing samples:  28%|██▊       | 28/100 [13:13<31:47, 26.50s/it]Analyzing samples:  29%|██▉       | 29/100 [13:42<32:07, 27.15s/it]Analyzing samples:  30%|███       | 30/100 [14:13<33:13, 28.48s/it]Analyzing samples:  31%|███       | 31/100 [14:42<32:47, 28.51s/it]Analyzing samples:  32%|███▏      | 32/100 [15:12<33:04, 29.19s/it]Analyzing samples:  33%|███▎      | 33/100 [15:45<33:49, 30.29s/it]Analyzing samples:  34%|███▍      | 34/100 [16:26<36:34, 33.26s/it]Analyzing samples:  35%|███▌      | 35/100 [16:55<34:49, 32.15s/it]Analyzing samples:  36%|███▌      | 36/100 [17:24<33:13, 31.15s/it]Analyzing samples:  37%|███▋      | 37/100 [17:55<32:47, 31.23s/it]Analyzing samples:  38%|███▊      | 38/100 [18:32<33:51, 32.76s/it]Analyzing samples:  39%|███▉      | 39/100 [18:59<31:41, 31.17s/it]Analyzing samples:  40%|████      | 40/100 [19:27<30:15, 30.25s/it]Analyzing samples:  41%|████      | 41/100 [20:00<30:32, 31.05s/it]Analyzing samples:  42%|████▏     | 42/100 [20:40<32:39, 33.79s/it]Analyzing samples:  43%|████▎     | 43/100 [21:17<33:02, 34.78s/it]Analyzing samples:  44%|████▍     | 44/100 [21:55<33:08, 35.50s/it]Analyzing samples:  45%|████▌     | 45/100 [22:40<35:14, 38.45s/it]Analyzing samples:  46%|████▌     | 46/100 [23:25<36:16, 40.31s/it]Analyzing samples:  47%|████▋     | 47/100 [24:02<34:46, 39.36s/it]Analyzing samples:  48%|████▊     | 48/100 [24:37<33:02, 38.13s/it]Analyzing samples:  49%|████▉     | 49/100 [25:12<31:38, 37.24s/it]Analyzing samples:  50%|█████     | 50/100 [25:42<29:17, 35.15s/it]Analyzing samples:  51%|█████     | 51/100 [26:00<24:22, 29.85s/it]Analyzing samples:  52%|█████▏    | 52/100 [26:30<23:51, 29.83s/it]Analyzing samples:  53%|█████▎    | 53/100 [27:46<34:13, 43.70s/it]Analyzing samples:  54%|█████▍    | 54/100 [28:56<39:30, 51.53s/it]Analyzing samples:  55%|█████▌    | 55/100 [30:21<46:19, 61.76s/it]Analyzing samples:  56%|█████▌    | 56/100 [31:54<52:09, 71.12s/it]Analyzing samples:  57%|█████▋    | 57/100 [33:47<59:56, 83.64s/it]Analyzing samples:  58%|█████▊    | 58/100 [35:19<1:00:23, 86.28s/it]Analyzing samples:  59%|█████▉    | 59/100 [36:05<50:35, 74.04s/it]  Analyzing samples:  60%|██████    | 60/100 [36:44<42:23, 63.59s/it]Analyzing samples:  61%|██████    | 61/100 [37:24<36:47, 56.61s/it]Analyzing samples:  62%|██████▏   | 62/100 [38:04<32:32, 51.39s/it]Analyzing samples:  63%|██████▎   | 63/100 [38:54<31:25, 50.95s/it]Analyzing samples:  64%|██████▍   | 64/100 [39:41<29:56, 49.90s/it]Analyzing samples:  65%|██████▌   | 65/100 [41:15<36:47, 63.08s/it]Analyzing samples:  66%|██████▌   | 66/100 [42:28<37:29, 66.16s/it]Analyzing samples:  67%|██████▋   | 67/100 [43:30<35:36, 64.75s/it]Analyzing samples:  68%|██████▊   | 68/100 [44:27<33:17, 62.43s/it]Analyzing samples:  69%|██████▉   | 69/100 [45:02<28:05, 54.36s/it]Analyzing samples:  70%|███████   | 70/100 [45:37<24:11, 48.37s/it]Analyzing samples:  71%|███████   | 71/100 [46:14<21:44, 44.99s/it]Analyzing samples:  72%|███████▏  | 72/100 [46:47<19:24, 41.60s/it]Analyzing samples:  73%|███████▎  | 73/100 [47:32<19:03, 42.35s/it]Analyzing samples:  74%|███████▍  | 74/100 [48:16<18:35, 42.90s/it]Analyzing samples:  75%|███████▌  | 75/100 [48:57<17:38, 42.33s/it]Analyzing samples:  76%|███████▌  | 76/100 [49:35<16:27, 41.14s/it]Analyzing samples:  77%|███████▋  | 77/100 [49:52<12:58, 33.87s/it]Analyzing samples:  78%|███████▊  | 78/100 [50:10<10:41, 29.14s/it]Analyzing samples:  79%|███████▉  | 79/100 [50:34<09:37, 27.50s/it]Analyzing samples:  80%|████████  | 80/100 [50:55<08:34, 25.74s/it]Analyzing samples:  81%|████████  | 81/100 [51:15<07:35, 23.96s/it]Analyzing samples:  82%|████████▏ | 82/100 [51:37<06:59, 23.33s/it]Analyzing samples:  83%|████████▎ | 83/100 [52:08<07:17, 25.75s/it]Analyzing samples:  84%|████████▍ | 84/100 [52:38<07:09, 26.85s/it]Analyzing samples:  85%|████████▌ | 85/100 [53:18<07:43, 30.91s/it]Analyzing samples:  86%|████████▌ | 86/100 [54:06<08:22, 35.91s/it]Analyzing samples:  87%|████████▋ | 87/100 [54:31<07:06, 32.80s/it]Analyzing samples:  88%|████████▊ | 88/100 [54:53<05:53, 29.50s/it]Analyzing samples:  89%|████████▉ | 89/100 [55:14<04:55, 26.88s/it]Analyzing samples:  90%|█████████ | 90/100 [55:35<04:11, 25.16s/it]Analyzing samples:  91%|█████████ | 91/100 [55:58<03:39, 24.44s/it]Analyzing samples:  92%|█████████▏| 92/100 [56:16<03:00, 22.59s/it]Analyzing samples:  93%|█████████▎| 93/100 [56:37<02:34, 22.12s/it]Analyzing samples:  94%|█████████▍| 94/100 [56:56<02:07, 21.27s/it]Analyzing samples:  95%|█████████▌| 95/100 [57:14<01:41, 20.30s/it]Analyzing samples:  96%|█████████▌| 96/100 [57:35<01:21, 20.26s/it]Analyzing samples:  97%|█████████▋| 97/100 [57:58<01:03, 21.07s/it]Analyzing samples:  98%|█████████▊| 98/100 [58:22<00:43, 21.95s/it]Analyzing samples:  99%|█████████▉| 99/100 [58:47<00:23, 23.00s/it]Analyzing samples: 100%|██████████| 100/100 [59:12<00:00, 23.67s/it]Analyzing samples: 100%|██████████| 100/100 [59:12<00:00, 35.53s/it]
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample20.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample20.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample20.png
+
+✓ Saved comprehensive results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/comprehensive_analysis_results.json
+✓ Saved CSV results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/comprehensive_analysis_results.csv
+✓ Saved comprehensive accuracy graph to accuracy_comparison_comprehensive.png
+✓ Saved blockage region analysis to blockage_region_analysis.png
+
+================================================================================
+ANALYSIS COMPLETE!
+================================================================================
+
+Generated files:
+  - comprehensive_analysis_results.json
+  - comprehensive_analysis_results.csv
+  - accuracy_comparison_comprehensive.png
+  - blockage_region_analysis.png
+  - individual_sample_*.png (for first 20 samples)
+
+================================================================================
+PIPELINE EXECUTION COMPLETE!
+================================================================================

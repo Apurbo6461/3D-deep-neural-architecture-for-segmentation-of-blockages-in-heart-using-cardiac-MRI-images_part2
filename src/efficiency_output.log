@@ -1,0 +1,36 @@
+/Users/abidhasan/Downloads/for thesis/dataset copy 6/src/efficiency_analysis.py:376: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  plt.tight_layout()
+⚠ psutil not available. Memory monitoring will be limited.
+Efficiency Analysis using device: mps
+================================================================================
+EFFICIENCY ANALYSIS FOR 3D DEEP NEURAL ARCHITECTURES
+================================================================================
+
+Analyzing efficiency for 3D U-Net...
+  Parameters: 22.58M
+  Model Size: 86.16 MB
+  Inference Time: 1806.94 ms ± 24.71 ms
+  Throughput: 0.55 samples/sec
+  Peak CPU Memory: 0.00 MB
+
+Analyzing efficiency for V-Net...
+  Parameters: 7.60M
+  Model Size: 28.99 MB
+  Inference Time: 3002.76 ms ± 598.15 ms
+  Throughput: 0.33 samples/sec
+  Peak CPU Memory: 0.00 MB
+
+Analyzing efficiency for ResAtt-3D-U-Net...
+  Parameters: 1.43M
+  Model Size: 5.46 MB
+  Inference Time: 734.97 ms ± 49.82 ms
+  Throughput: 1.36 samples/sec
+  Peak CPU Memory: 0.00 MB
+
+✓ Saved efficiency results to ./efficiency_analysis_results.csv
+✓ Saved efficiency results to ./efficiency_analysis_results.json
+✓ Saved efficiency comparison graph to efficiency_comparison.png
+
+================================================================================
+EFFICIENCY ANALYSIS COMPLETE!
+================================================================================

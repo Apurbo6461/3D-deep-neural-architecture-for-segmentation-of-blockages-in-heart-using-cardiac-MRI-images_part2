@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Thesis 2 Report — An Efficient 3D Deep Neural Architecture for Segmentation of Blockages in Heart Using Cardiac MRI Images</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; color: #000; max-width: 21cm; margin: 0 auto; padding: 1.5cm; }
+    .page-break { page-break-before: always; }
+    .title-page { text-align: center; padding-top: 3cm; }
+    .title-page h1 { font-size: 14pt; margin-bottom: 1.5em; line-height: 1.4; }
+    .title-page .by { margin: 2em 0 0.5em; }
+    .title-page .authors { margin-bottom: 2em; }
+    .title-page .dept { margin-top: 2em; }
+    .title-page .copyright { margin-top: 2em; font-size: 10pt; }
+    h2 { font-size: 12pt; margin: 1em 0 0.5em; }
+    h3 { font-size: 12pt; margin: 0.8em 0 0.4em; }
+    p { margin-bottom: 0.8em; text-align: justify; }
+    ul { margin: 0 0 0.8em 1.5em; }
+    li { margin-bottom: 0.3em; }
+    table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 11pt; }
+    th, td { border: 1px solid #000; padding: 4px 8px; text-align: left; }
+    th { background: #f0f0f0; }
+    .abstract-box { margin: 1em 0; padding: 1em; border: 1px solid #ccc; }
+    .toc-item { display: flex; justify-content: space-between; margin: 0.2em 0; border-bottom: 1px dotted #999; padding-bottom: 0.2em; }
+    .toc-item .page { margin-left: auto; }
+    .fig-block { margin: 1em 0; text-align: center; }
+    .fig-block img { max-width: 100%; height: auto; border: 1px solid #ccc; }
+    .fig-cap { font-size: 10pt; margin-top: 0.3em; font-style: italic; }
+    .refs p { margin-bottom: 0.5em; text-indent: -2em; margin-left: 2em; font-size: 10pt; }
+    @media print { .page-break { page-break-before: always; } body { padding: 1cm; } }
+  </style>
+</head>
+<body>
+
+<div class="title-page">
+  <h1>An Efficient 3D Deep Neural Architecture for Segmentation of Blockages in Heart Using Cardiac MRI Images</h1>
+  <p class="by">by</p>
+  <p class="authors">[Author Name]<br>[Student ID]</p>
+  <p class="dept">A thesis submitted to the Department of Computer Science and Engineering<br>in partial fulfillment of the requirements for the degree of<br>B.Sc. in Computer Science</p>
+  <p><strong>Supervised by</strong><br>[Supervisor Name]<br>[Designation]<br>Department of Computer Science and Engineering<br>BRAC University</p>
+  <p>Department of Computer Science and Engineering<br>BRAC University<br>[Month Year]</p>
+  <p class="copyright">© [Year]. BRAC University. All rights reserved.</p>
+</div>
+
+<div class="page-break">
+  <h2>Declaration</h2>
+  <p>It is hereby declared that</p>
+  <p>1. The thesis submitted is my/our own original work while completing degree at BRAC University.</p>
+  <p>2. The thesis does not contain material previously published or written by a third party, except where this is appropriately cited through full and accurate referencing.</p>
+  <p>3. The thesis does not contain material which has been accepted, or submitted, for any other degree or diploma at a university or other institution.</p>
+  <p>4. I/We have acknowledged all main sources of help.</p>
+  <p><strong>Student’s Full Name &amp; Signature:</strong><br>[Author Name]<br>[Student ID]</p>
+</div>
+
+<div class="page-break">
+  <h2>Approval</h2>
+  <p>The thesis/project titled “An Efficient 3D Deep Neural Architecture for Segmentation of Blockages in Heart Using Cardiac MRI Images” submitted by [Author Name] ([Student ID]) of [Semester, Year] has been accepted as satisfactory in partial fulfillment of the requirement for the degree of B.Sc. in Computer Science on [Date].</p>
+  <p><strong>Examining Committee:</strong></p>
+  <p><strong>Supervisor:</strong><br>[Supervisor Name]<br>[Designation]<br>Department of Computer Science and Engineering<br>BRAC University</p>
+</div>
+
+<div class="page-break">
+  <h2>Abstract</h2>
+  <div class="abstract-box">
+    <p>Heart blockages and cardiac structure abnormalities are critical concerns for cardiovascular diagnosis. Cardiac MRI enables non-invasive assessment of heart structures. Deep learning has shown promising results in automatic segmentation of cardiac MRI; however, efficient 3D architectures for segmenting blockages within the heart remain an active research area. This Pre-Thesis 2 Report (P2) documents the design and simulation of multiple 3D deep learning solutions for cardiac structure segmentation and heart blockage detection from cardiac MRI, in line with course outcomes CO5 (design of multiple solutions with simulation for functional verification) and CO14 (effective communication through written documents, journals, technical reports, deliverables, presentations, and verbal exchanges).</p>
+    <p>We use the Automated Cardiac Diagnosis Challenge (ACDC) dataset (Bernard et al., 2018) and implement three alternative 3D architectures—3D U-Net (Çiçek et al., 2016), V-Net (Milletari et al., 2016), and ResAtt-3D-U-Net (Oktay et al., 2018)—with a common blockage-detection and anatomical-region pipeline. ResAtt-3D-U-Net achieved the best segmentation performance (Dice 0.91, IoU 0.84, accuracy 99.6%), supporting the thesis claim of an efficient 3D deep neural architecture for cardiac segmentation. This report is prepared as the Pre-Thesis 2 Report deliverable, with Chapter 4 addressing the design process and preliminary design (CO5), and supports the Final Report in IEEE Journal version, P2 Poster Presentation (5 marks), Defense Panel (Final Report) (10 marks), and Supervisor Marks (5 marks) (CO14).</p>
+  </div>
+  <p><strong>Keywords:</strong> cardiac MRI, 3D deep learning, segmentation, heart blockage detection, ACDC, U-Net, V-Net, attention U-Net.</p>
+</div>
+
+<div class="page-break">
+  <h2>Acknowledgement</h2>
+  <p>We are grateful to our thesis Supervisor for continued guidance throughout the process. We also thank the Graduate Research Assistant and colleagues for assistance in topic selection and report writing. We acknowledge the use of the ACDC dataset (Bernard et al., 2018) and related literature cited in this report.</p>
+</div>
+
+<div class="page-break">
+  <h2>Table of Contents</h2>
+  <div class="toc-item">Declaration <span class="page">i</span></div>
+  <div class="toc-item">Approval <span class="page">ii</span></div>
+  <div class="toc-item">Abstract <span class="page">iii</span></div>
+  <div class="toc-item">Acknowledgement <span class="page">iv</span></div>
+  <div class="toc-item">Table of Contents <span class="page">v</span></div>
+  <div class="toc-item">List of Figures <span class="page">vi</span></div>
+  <div class="toc-item">1 Introduction <span class="page">1</span></div>
+  <div class="toc-item">2 Problem Statement <span class="page">2</span></div>
+  <div class="toc-item">3 Research Objectives <span class="page">3</span></div>
+  <div class="toc-item">4 Design and Alternative Solutions (CO5) <span class="page">4</span></div>
+  <div class="toc-item">4.1 Design Process or Methodology Overview <span class="page">4</span></div>
+  <div class="toc-item">4.2 Preliminary Design or Design (Model) Specification <span class="page">5</span></div>
+  <div class="toc-item">5 Literature Review <span class="page">6</span></div>
+  <div class="toc-item">6 Research Methodology <span class="page">7</span></div>
+  <div class="toc-item">7 Model Analysis <span class="page">8</span></div>
+  <div class="toc-item">8 Data Analysis <span class="page">10</span></div>
+  <div class="toc-item">9 Preliminary Analysis and Results <span class="page">11</span></div>
+  <div class="toc-item">10 Communication and Deliverables (CO14) <span class="page">12</span></div>
+  <div class="toc-item">11 Conclusion <span class="page">13</span></div>
+  <div class="toc-item">Bibliography <span class="page">14</span></div>
+</div>
+
+<div class="page-break">
+  <h2>List of Figures</h2>
+  <div class="toc-item">Figure 1.1 Training Loss and Validation Dice Score <span class="page">11</span></div>
+  <div class="toc-item">Figure 1.2 Model Comparison (Dice, IoU, Accuracy, Blockage metrics) <span class="page">11</span></div>
+  <div class="toc-item">Figure 1.3 Comprehensive Accuracy Comparison <span class="page">11</span></div>
+  <div class="toc-item">Figure 1.4 Blockage Distribution by Anatomical Region <span class="page">11</span></div>
+  <div class="toc-item">Figure 1.5 Sample Output: Segmentation and Blockage Detection <span class="page">12</span></div>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 1<br>Introduction</h2>
+  <h3>1.1 Background</h3>
+  <p>Cardiac MRI is a key modality for assessing heart structure and function. Automatic segmentation of cardiac structures (left ventricle, right ventricle, myocardium) and detection of blockages support diagnosis and treatment planning. Deep learning, in particular 3D convolutional and attention-based architectures, has shown strong performance on cardiac MRI segmentation benchmarks such as the Automated Cardiac Diagnosis Challenge (ACDC) (Bernard et al., 2018; Vesal et al., 2020).</p>
+  <h3>1.2 Motivation</h3>
+  <p>Our motivation is to design an efficient 3D deep neural architecture for segmenting cardiac structures and detecting blockages in the heart using cardiac MRI. We aim to compare multiple alternative solutions (CO5) and document the design process and preliminary design in this Pre-Thesis 2 Report, supporting effective communication (CO14) through written reports, deliverables, and presentations.</p>
+  <h3>1.3 Research Questions</h3>
+  <p>How can we design multiple 3D deep learning solutions to meet desired objectives, needs, and requirements within given constraints? How do 3D U-Net, V-Net, and ResAtt-3D-U-Net compare for cardiac segmentation and blockage detection on ACDC? How can we demonstrate effective communication through written documents, journals, technical reports, deliverables, and presentations?</p>
+  <h3>1.4 Limitations</h3>
+  <p>Limitations include the use of a single dataset (ACDC), computational constraints (crop size 128×128×64, batch size 1), and binary/foreground segmentation; multi-class and clinical validation are left for future work.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 2<br>Problem Statement</h2>
+  <p>Heart blockages and structural abnormalities require accurate segmentation and localization from cardiac MRI. Traditional manual analysis is time-consuming and subject to inter-observer variability. Although deep learning has shown promise, there is a need to design multiple engineering/theoretical solutions that meet desired objectives, needs, and requirements within given constraints (CO5), and to perform simulation of alternative design solutions for functional verification. This Pre-Thesis 2 Report addresses that need and supports communication through written documents, technical reports, deliverables, and presentations (CO14).</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 3<br>Research Objectives</h2>
+  <p>Our objectives are: (1) to design an efficient 3D deep neural architecture for segmenting cardiac structures and detecting blockages using cardiac MRI; (2) to prepare the design process as per objectives, specifications, requirements, and constraints; (3) to preliminary design multiple alternative solutions of the system (3D U-Net, V-Net, ResAtt-3D-U-Net); (4) to perform simulation of the alternative design solutions for functional verification; (5) to demonstrate effective communication by means of written documents, journals, technical reports, deliverables, presentations, and verbal exchanges (CO14).</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 4<br>Design and Alternative Solutions (CO5)</h2>
+  <p>This chapter addresses <strong>CO5:</strong> design multiple engineering/theoretical solutions to meet the desired objectives, needs, and requirements within the given constraints. The Pre-Thesis 2 Report (P2) deliverable includes <strong>Chapter 4: 4.1 Design Process or Methodology Overview</strong> and <strong>Chapter 4: 4.2 Preliminary Design or Design (Model) Specification</strong>. Assessment: 5 from Chapter 4 of P2; 10 from Defense Panel.</p>
+  <h3>4.1 Design Process or Methodology Overview</h3>
+  <p>The design process was <strong>prepared as per objectives, specifications, requirements, and constraints</strong> (CO5).</p>
+  <p><strong>Objectives:</strong> Design an efficient 3D deep neural architecture for segmenting cardiac structures and detecting blockages in the heart using cardiac MRI; implement and compare multiple 3D models; detect and localize blockages; identify anatomical regions (LV, RV, myocardium, arteries).</p>
+  <p><strong>Specifications and requirements:</strong> Input 3D NIfTI cardiac MRI; output segmentation masks and blockage metrics (rate, count, severity) and anatomical labels; evaluation using Dice, IoU, accuracy, sensitivity, specificity; compatibility with ACDC (Bernard et al., 2018).</p>
+  <p><strong>Constraints:</strong> Use of provided ACDC training and testing data; computational limits (crop size 128×128×64, batch size 1); PyTorch and NiBabel; comparison of at least three distinct 3D architectures.</p>
+  <p><strong>Design methodology:</strong> (1) Problem definition — segment cardiac structures and detect blockages; (2) Literature and dataset review — ACDC and Bernard et al. (2018); (3) Architecture selection — 3D U-Net, V-Net, ResAtt-3D-U-Net (Çiçek et al., 2016; Milletari et al., 2016; Oktay et al., 2018); (4) Implementation and training — unified data pipeline, Dice-based loss, validation; (5) Blockage detection and regional analysis — vessel narrowing, disconnected regions, intensity anomalies, anatomical region identification; (6) Simulation and evaluation — test-set evaluation and comparison.</p>
+  <h3>4.2 Preliminary Design or Design (Model) Specification</h3>
+  <p><strong>Preliminary design of multiple alternative solutions of the system:</strong> Three alternative 3D solutions were designed. <strong>Simulation of the alternative design solutions for functional verification</strong> was performed on the test set.</p>
+  <p><strong>Alternative 1 — 3D U-Net:</strong> 4-level encoder–decoder, double convolution blocks (Conv3D–BatchNorm–ReLU), 32 base filters, skip connections (Çiçek et al., 2016).</p>
+  <p><strong>Alternative 2 — V-Net:</strong> Residual blocks, instance normalization, 5×5×5 convolutions, PReLU, 16 base filters (Milletari et al., 2016).</p>
+  <p><strong>Alternative 3 — ResAtt-3D-U-Net:</strong> Residual blocks with attention gates on skip connections; 16 base filters (Oktay et al., 2018).</p>
+  <p><strong>Blockage detection and anatomical region specification:</strong> For all three, a common post-processing pipeline: (1) blockage detection — vessel narrowing, disconnected regions, intensity anomalies; (2) anatomical region identification — LV, RV, myocardium, artery.</p>
+  <p><strong>Simulation and functional verification — results (mean ± std):</strong></p>
+  <table>
+    <tr><th>Model</th><th>Dice</th><th>IoU</th><th>Accuracy</th><th>Sensitivity</th><th>Specificity</th></tr>
+    <tr><td>3D U-Net</td><td>~0</td><td>~0</td><td>0.974 ± 0.007</td><td>~0</td><td>1.000</td></tr>
+    <tr><td>V-Net</td><td>0.150 ± 0.037</td><td>0.081 ± 0.021</td><td>0.708 ± 0.016</td><td>0.999</td><td>0.701</td></tr>
+    <tr><td>ResAtt-3D-U-Net</td><td><strong>0.911 ± 0.012</strong></td><td><strong>0.836 ± 0.020</strong></td><td><strong>0.996 ± 0.001</strong></td><td><strong>0.905</strong></td><td><strong>0.998</strong></td></tr>
+  </table>
+  <p>ResAtt-3D-U-Net achieves the best segmentation and accuracy metrics, fulfilling functional verification. <strong>Assessment alignment (CO5):</strong> 5 from Chapter 4 of P2; 10 from Defense Panel.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 5<br>Literature Review</h2>
+  <p>Bernard et al. (2018) introduced the ACDC dataset and benchmark for automatic cardiac MRI multi-structures segmentation and diagnosis. Çiçek et al. (2016) proposed 3D U-Net for dense volumetric segmentation from sparse annotation. Milletari et al. (2016) presented V-Net for volumetric medical image segmentation. Oktay et al. (2018) introduced Attention U-Net with attention gates. Vesal et al. (2020) demonstrated fully automated 3D cardiac MRI localisation and segmentation using deep neural networks on ACDC. This work builds on these references to design multiple alternative 3D solutions and perform simulation for functional verification (CO5).</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 6<br>Research Methodology</h2>
+  <p>Research papers, journals, and the ACDC dataset were used. Citations and references are in APA 7. The design process was prepared as per objectives, specifications, requirements, and constraints. We selected three 3D architectures (3D U-Net, V-Net, ResAtt-3D-U-Net), implemented a unified data pipeline, trained on ACDC training set, and performed simulation on the test set for functional verification. Blockage detection (vessel narrowing, disconnected regions, intensity anomalies) and anatomical region identification (LV, RV, myocardium, artery) were applied to segmentation outputs. Accuracy, Dice, IoU, sensitivity, specificity, and blockage metrics were recorded and analyzed.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 7<br>Model Analysis</h2>
+  <h3>7.1 3D U-Net</h3>
+  <p>Standard 4-level encoder–decoder U-Net with 32 base filters, double conv (Conv3D–BN–ReLU), max-pooling, skip connections (Çiçek et al., 2016). Suitable for volumetric cardiac segmentation.</p>
+  <h3>7.2 V-Net</h3>
+  <p>3D V-Net with residual design: 16 base filters, 5×5×5 convolutions, instance norm, PReLU, strided conv downsampling (Milletari et al., 2016). Smaller parameter footprint.</p>
+  <h3>7.3 ResAtt-3D-U-Net</h3>
+  <p>Residual Attention 3D U-Net: residual blocks + attention gates on skip connections; 16 base filters (Oktay et al., 2018). Attention modulates encoder features using decoder context, improving segmentation of small structures.</p>
+  <h3>7.4 Comparison</h3>
+  <p>ResAtt-3D-U-Net attained the highest Dice (0.91), IoU (0.84), and accuracy (99.6%) in our simulation. 3D U-Net and V-Net showed lower Dice/IoU on the test set. All three use a common blockage-detection and anatomical-region pipeline.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 8<br>Data Analysis</h2>
+  <h3>8.1 Dataset</h3>
+  <p><strong>Dataset copy 7</strong> — instance of the <strong>Automated Cardiac Diagnosis Challenge (ACDC)</strong> cardiac MRI dataset (Bernard et al., 2018). NIfTI 3D volumes; each volume corresponds to one cardiac phase (frame) per patient.</p>
+  <p><strong>Structure:</strong> Training: <code>training/patient001/</code> … <code>training/patient100/</code> — each folder contains <code>patientXXX_frameYY.nii</code> (MRI) and <code>patientXXX_frameYY_gt.nii</code> (ground-truth). Testing: <code>testing/patient101/</code> … <code>testing/patient150/</code> — same structure.</p>
+  <p><strong>Preprocessing:</strong> Volumes resampled to 128×128×64, normalized. Ground-truth masks define LV, RV, myocardium for supervised segmentation and blockage analysis.</p>
+  <h3>8.2 Use in Project</h3>
+  <p>Training data train the three 3D models; test data are used for simulation and for generating accuracy, segmentation, and blockage detection results and graphs in this report.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 9<br>Preliminary Analysis and Results</h2>
+  <p>The following figures support design verification and thesis claim. ResAtt-3D-U-Net achieves the best segmentation and accuracy metrics.</p>
+  <div class="fig-block">
+    <img src="training_metrics.png" alt="Training Loss and Validation Dice Score" width="600">
+    <p class="fig-cap">Figure 1.1 Training Loss and Validation Dice Score.</p>
+  </div>
+  <div class="fig-block">
+    <img src="model_comparison.png" alt="Model comparison" width="600">
+    <p class="fig-cap">Figure 1.2 Model Comparison (Dice, IoU, Accuracy, Blockage metrics).</p>
+  </div>
+  <div class="fig-block">
+    <img src="src/accuracy_comparison_comprehensive.png" alt="Comprehensive accuracy comparison" width="600">
+    <p class="fig-cap">Figure 1.3 Comprehensive Accuracy Comparison.</p>
+  </div>
+  <div class="fig-block">
+    <img src="src/blockage_region_analysis.png" alt="Blockage region analysis" width="600">
+    <p class="fig-cap">Figure 1.4 Blockage Distribution by Anatomical Region.</p>
+  </div>
+  <div class="fig-block">
+    <img src="src/individual_sample_resatt_3d_u_net_sample8.png" alt="Sample output" width="550">
+    <p class="fig-cap">Figure 1.5 Sample Output: Segmentation and Blockage Detection (ResAtt-3D-U-Net).</p>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 10<br>Communication and Deliverables (CO14)</h2>
+  <p>Effective communication is demonstrated <strong>by means of written documents, journals, technical reports, deliverables, presentations, and verbal exchanges</strong> throughout the various stages of the work (CO14).</p>
+  <p><strong>Activities:</strong></p>
+  <ul>
+    <li><strong>Verbal and written communication with stakeholders</strong> — Design rationale, progress notes, and reproducible scripts enable discussion with supervisors and panel members.</li>
+    <li><strong>Write notes, Journals</strong> — Progress notes, design rationale, and journals are maintained; this report serves as written evidence.</li>
+    <li><strong>Prepare project deliverables, reports at various stages</strong> — This Pre-Thesis 2 Report (P2), technical documentation (README, guides), and structured results (evaluation_results.json/csv, comprehensive_analysis_results) at various stages.</li>
+    <li><strong>Prepare presentations</strong> — P2 Poster Presentation and Oral Presentation and Demo are prepared and supported by this report and figures.</li>
+  </ul>
+  <p><strong>Deliverables / Evidence:</strong> Journals (notes, design rationale); Project Reports (this P2 Report, README, guides, JSON/CSV results); Oral Presentation and Demo (P2 poster, defense/demo).</p>
+  <p><strong>Final deliverable:</strong> This work is documented in a form suitable for <strong>Final Report</strong> and <strong>IEEE Journal version</strong>.</p>
+  <p><strong>Assessment alignment:</strong> 5 from P2 Poster Presentation; 10 from Defense Panel (Final Report); 5 from Supervisor Marks.</p>
+</div>
+
+<div class="page-break">
+  <h2>Chapter 11<br>Conclusion</h2>
+  <p>This Pre-Thesis 2 Report documented the design process (Chapter 4.1) and preliminary design of three 3D deep learning solutions (Chapter 4.2) for heart blockage segmentation using cardiac MRI. Dataset copy 7 (ACDC) provided training and test data; 3D U-Net, V-Net, and ResAtt-3D-U-Net were designed, implemented, and simulated. ResAtt-3D-U-Net achieved the best segmentation and accuracy metrics. Justification is supported by accuracy graphs and output pictures (Figures 1.1–1.5), fulfilling CO5 (design and simulation; 5 from Chapter 4 of P2, 10 from Defense Panel) and providing a basis for the P2 poster, final report in IEEE Journal version, and defense panel (CO14: 5 from P2 Poster, 10 from Defense Panel, 5 from Supervisor Marks).</p>
+  <h3>Rubric Cross-Check (Attached Two Images)</h3>
+  <p><strong>CO5 (Image 2):</strong> Design multiple solutions → Ch. 4 intro; Preparing design process as per objectives, specifications, requirements and constraints → §4.1; Preliminary design multiple alternative solutions → §4.2 (Alternatives 1–3); Perform simulation for functional verification → §4.2 (table, Ch. 9 figures); Pre-Thesis 2 Report → title, whole document; Chapter 4: 4.1 and 4.2 → §4.1, §4.2; 5 from Chapter 4 of P2, 10 from Defense Panel → §4.2 and Ch. 10.</p>
+  <p><strong>CO14 (Image 1):</strong> Effective communication (written documents, journals, technical reports, deliverables, presentations, verbal exchanges) → Ch. 10; Verbal and written communication with stakeholders → Ch. 10 Activities; Write notes, Journals → Ch. 10; Prepare project deliverables, reports at various stages → Ch. 10; Prepare presentations → Ch. 10; Journals, Project Reports, Oral Presentation and Demo → Ch. 10 Deliverables; Final Report, IEEE Journal version → Ch. 10; 5 from P2 Poster, 10 from Defense Panel (Final Report), 5 from Supervisor Marks → Ch. 10 Assessment.</p>
+</div>
+
+<div class="page-break">
+  <h2>Bibliography</h2>
+  <div class="refs">
+    <p>Bernard, O., Lalande, A., Zotti, C., Cervenansky, F., Yang, X., Heng, P.-A., Cetin, I., Lekadir, K., Camara, O., Ballester, M. A. G., Sanroma, G., Napel, S., Petersen, S. E., Tziritas, G., Grinias, E., Khened, M., Kollerathu, V. A., Krishnamurthi, G., Rohé, M.-M., … Jodoin, P.-M. (2018). Deep learning techniques for automatic MRI cardiac multi-structures segmentation and diagnosis: Is the problem solved? <em>IEEE Transactions on Medical Imaging</em>, <em>37</em>(11), 2514–2525. https://doi.org/10.1109/TMI.2018.2837502</p>
+    <p>Çiçek, Ö., Abdulkadir, A., Lienkamp, S. S., Brox, T., &amp; Ronneberger, O. (2016). 3D U-Net: Learning dense volumetric segmentation from sparse annotation. In S. Ourselin et al. (Eds.), <em>Medical Image Computing and Computer-Assisted Intervention – MICCAI 2016</em> (pp. 424–432). Springer. https://doi.org/10.1007/978-3-319-46723-8_49</p>
+    <p>Milletari, F., Navab, N., &amp; Ahmadi, S.-A. (2016). V-Net: Fully convolutional neural networks for volumetric medical image segmentation. In <em>Proceedings of the 2016 Fourth International Conference on 3D Vision (3DV)</em> (pp. 565–571). IEEE. https://doi.org/10.1109/3DV.2016.79</p>
+    <p>Oktay, O., Schlemper, J., Folgoc, L. L., Lee, M., Heinrich, M., Misawa, K., Mori, K., McDonagh, S., Hammerla, N. Y., Kainz, B., Glocker, B., &amp; Rueckert, D. (2018). Attention U-Net: Learning where to look for the pancreas. <em>arXiv</em>. https://arxiv.org/abs/1804.03999</p>
+    <p>Vesal, S., Maier, A., &amp; Ravikumar, N. (2020). Fully automated 3D cardiac MRI localisation and segmentation using deep neural networks. <em>Journal of Imaging</em>, <em>6</em>(6), 65. https://doi.org/10.3390/jimaging6060065</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+[
+  {
+    "model_name": "3D U-Net",
+    "sample_id": 0,
+    "sample_index": 1,
+    "blockage_rate": 50.68388348789908,
+    "blockage_count": 63,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 53591,
+    "blocked_voxels": 27162
+  },
+  {
+    "model_name": "3D U-Net",
+    "sample_id": 1,
+    "sample_index": 2,
+    "blockage_rate": 52.47747747747747,
+    "blockage_count": 60,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 50616,
+    "blocked_voxels": 26562
+  },
+  {
+    "model_name": "3D U-Net",
+    "sample_id": 2,
+    "sample_index": 3,
+    "blockage_rate": 52.091928670598776,
+    "blockage_count": 116,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 101557,
+    "blocked_voxels": 52903
+  },
+  {
+    "model_name": "3D U-Net",
+    "sample_id": 3,
+    "sample_index": 4,
+    "blockage_rate": 52.627204179777955,
+    "blockage_count": 123,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 101058,
+    "blocked_voxels": 53184
+  },
+  {
+    "model_name": "3D U-Net",
+    "sample_id": 4,
+    "sample_index": 5,
+    "blockage_rate": 47.73179242805148,
+    "blockage_count": 89,
+    "blockage_severity": 0.9546358485610296,
+    "total_foreground_voxels": 53302,
+    "blocked_voxels": 25442
+  },
+  {
+    "model_name": "V-Net",
+    "sample_id": 0,
+    "sample_index": 1,
+    "blockage_rate": 52.39264987219266,
+    "blockage_count": 6,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 311015,
+    "blocked_voxels": 162949
+  },
+  {
+    "model_name": "V-Net",
+    "sample_id": 1,
+    "sample_index": 2,
+    "blockage_rate": 52.65415363444988,
+    "blockage_count": 6,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 316843,
+    "blocked_voxels": 166831
+  },
+  {
+    "model_name": "V-Net",
+    "sample_id": 2,
+    "sample_index": 3,
+    "blockage_rate": 50.315692937178866,
+    "blockage_count": 5,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 340204,
+    "blocked_voxels": 171176
+  },
+  {
+    "model_name": "V-Net",
+    "sample_id": 3,
+    "sample_index": 4,
+    "blockage_rate": 50.958445001080186,
+    "blockage_count": 6,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 342534,
+    "blocked_voxels": 174550
+  },
+  {
+    "model_name": "V-Net",
+    "sample_id": 4,
+    "sample_index": 5,
+    "blockage_rate": 49.41481819030933,
+    "blockage_count": 7,
+    "blockage_severity": 0.9882963638061867,
+    "total_foreground_voxels": 353309,
+    "blocked_voxels": 174587
+  },
+  {
+    "model_name": "ResAtt-3D-U-Net",
+    "sample_id": 0,
+    "sample_index": 1,
+    "blockage_rate": 48.87855010068745,
+    "blockage_count": 1,
+    "blockage_severity": 0.9775710020137489,
+    "total_foreground_voxels": 28802,
+    "blocked_voxels": 14078
+  },
+  {
+    "model_name": "ResAtt-3D-U-Net",
+    "sample_id": 1,
+    "sample_index": 2,
+    "blockage_rate": 49.891239865532924,
+    "blockage_count": 1,
+    "blockage_severity": 0.9978247973106584,
+    "total_foreground_voxels": 20228,
+    "blocked_voxels": 10092
+  },
+  {
+    "model_name": "ResAtt-3D-U-Net",
+    "sample_id": 2,
+    "sample_index": 3,
+    "blockage_rate": 48.104693140794225,
+    "blockage_count": 1,
+    "blockage_severity": 0.9620938628158845,
+    "total_foreground_voxels": 26592,
+    "blocked_voxels": 12792
+  },
+  {
+    "model_name": "ResAtt-3D-U-Net",
+    "sample_id": 3,
+    "sample_index": 4,
+    "blockage_rate": 51.99291914116034,
+    "blockage_count": 2,
+    "blockage_severity": 1.0,
+    "total_foreground_voxels": 17512,
+    "blocked_voxels": 9105
+  },
+  {
+    "model_name": "ResAtt-3D-U-Net",
+    "sample_id": 4,
+    "sample_index": 5,
+    "blockage_rate": 49.49174393811673,
+    "blockage_count": 2,
+    "blockage_severity": 0.9898348787623346,
+    "total_foreground_voxels": 40334,
+    "blocked_voxels": 19962
+  }
+]

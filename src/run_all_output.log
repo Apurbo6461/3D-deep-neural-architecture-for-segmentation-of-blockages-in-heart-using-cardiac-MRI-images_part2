@@ -1,0 +1,296 @@
+
+======================================================================
+HEART BLOCKAGE DETECTION - COMPLETE PIPELINE (20 SAMPLES)
+======================================================================
+
+======================================================================
+STEP 1: COMPREHENSIVE BLOCKAGE ANALYSIS (20 samples)
+======================================================================
+================================================================================
+COMPREHENSIVE BLOCKAGE DETECTION AND SEGMENTATION PIPELINE
+================================================================================
+
+Thesis: An efficient 3D deep neural architecture for segmentation
+        of blockages in heart using cardiac MRI images
+================================================================================
+Using device: mps
+✓ Loaded 3D U-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_3d_u-net.pth
+✓ Loaded V-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_v-net.pth
+✓ Loaded ResAtt-3D-U-Net from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_resatt-3d-u-net.pth
+
+================================================================================
+COMPREHENSIVE BLOCKAGE ANALYSIS PIPELINE
+================================================================================
+
+Test samples: 100
+Analyzing first 20 samples
+Analyzing samples:   0%|          | 0/100 [00:00<?, ?it/s]Analyzing samples:   1%|          | 1/100 [01:08<1:53:47, 68.96s/it]Analyzing samples:   2%|▏         | 2/100 [02:20<1:55:06, 70.47s/it]Analyzing samples:   3%|▎         | 3/100 [03:22<1:47:53, 66.74s/it]Analyzing samples:   4%|▍         | 4/100 [04:37<1:52:04, 70.05s/it]Analyzing samples:   5%|▌         | 5/100 [05:44<1:48:47, 68.72s/it]Analyzing samples:   6%|▌         | 6/100 [07:23<2:03:53, 79.08s/it]Analyzing samples:   7%|▋         | 7/100 [08:59<2:11:03, 84.55s/it]Analyzing samples:   8%|▊         | 8/100 [09:54<1:55:18, 75.20s/it]Analyzing samples:   9%|▉         | 9/100 [10:59<1:49:04, 71.92s/it]Analyzing samples:  10%|█         | 10/100 [12:00<1:42:52, 68.58s/it]Analyzing samples:  11%|█         | 11/100 [12:58<1:37:13, 65.54s/it]Analyzing samples:  12%|█▏        | 12/100 [13:56<1:32:36, 63.14s/it]Analyzing samples:  13%|█▎        | 13/100 [14:49<1:26:54, 59.94s/it]Analyzing samples:  14%|█▍        | 14/100 [15:45<1:24:21, 58.86s/it]Analyzing samples:  15%|█▌        | 15/100 [16:33<1:18:55, 55.71s/it]Analyzing samples:  16%|█▌        | 16/100 [17:19<1:13:40, 52.63s/it]Analyzing samples:  17%|█▋        | 17/100 [17:53<1:04:54, 46.92s/it]Analyzing samples:  18%|█▊        | 18/100 [18:20<56:11, 41.12s/it]  Analyzing samples:  19%|█▉        | 19/100 [18:51<51:22, 38.05s/it]Analyzing samples:  20%|██        | 20/100 [19:24<48:51, 36.64s/it]Analyzing samples:  20%|██        | 20/100 [19:24<1:17:39, 58.25s/it]
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample1.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample2.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample3.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample4.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample5.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample6.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample7.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample8.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample9.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample10.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample11.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample12.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample13.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample14.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample15.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample16.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample17.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample18.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample19.png
+  ✓ Saved individual visualization: individual_sample_3d_u_net_sample20.png
+  ✓ Saved individual visualization: individual_sample_v_net_sample20.png
+  ✓ Saved individual visualization: individual_sample_resatt_3d_u_net_sample20.png
+
+✓ Saved comprehensive results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/comprehensive_analysis_results.json
+✓ Saved CSV results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/comprehensive_analysis_results.csv
+✓ Saved comprehensive accuracy graph to accuracy_comparison_comprehensive.png
+✓ Saved blockage region analysis to blockage_region_analysis.png
+
+================================================================================
+ANALYSIS COMPLETE!
+================================================================================
+
+Generated files:
+  - comprehensive_analysis_results.json
+  - comprehensive_analysis_results.csv
+  - accuracy_comparison_comprehensive.png
+  - blockage_region_analysis.png
+  - individual_sample_*.png (for first 20 samples)
+
+================================================================================
+PIPELINE EXECUTION COMPLETE!
+================================================================================
+
+======================================================================
+STEP 2: EVALUATION (20 samples)
+======================================================================
+Using device: mps
+Loading test dataset from: /Users/abidhasan/Downloads/for thesis/dataset copy 6/testing
+Test samples: 100 (using first 20)
+Loaded weights from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_3d_u-net.pth
+
+Evaluating 3D U-Net...
+Evaluating 3D U-Net:   0%|          | 0/100 [00:00<?, ?it/s]Evaluating 3D U-Net:   1%|          | 1/100 [00:02<03:38,  2.20s/it]Evaluating 3D U-Net:   2%|▏         | 2/100 [00:06<05:12,  3.19s/it]Evaluating 3D U-Net:   3%|▎         | 3/100 [00:10<06:11,  3.83s/it]Evaluating 3D U-Net:   4%|▍         | 4/100 [00:14<05:52,  3.67s/it]Evaluating 3D U-Net:   5%|▌         | 5/100 [00:18<06:28,  4.09s/it]Evaluating 3D U-Net:   6%|▌         | 6/100 [00:21<05:39,  3.62s/it]Evaluating 3D U-Net:   7%|▋         | 7/100 [00:24<05:27,  3.53s/it]Evaluating 3D U-Net:   8%|▊         | 8/100 [00:28<05:21,  3.50s/it]Evaluating 3D U-Net:   9%|▉         | 9/100 [00:31<05:11,  3.42s/it]Evaluating 3D U-Net:  10%|█         | 10/100 [00:35<05:05,  3.40s/it]Evaluating 3D U-Net:  11%|█         | 11/100 [00:41<06:24,  4.32s/it]Evaluating 3D U-Net:  12%|█▏        | 12/100 [00:45<06:22,  4.34s/it]Evaluating 3D U-Net:  13%|█▎        | 13/100 [00:51<06:46,  4.68s/it]Evaluating 3D U-Net:  14%|█▍        | 14/100 [00:54<06:13,  4.34s/it]Evaluating 3D U-Net:  15%|█▌        | 15/100 [00:57<05:30,  3.88s/it]Evaluating 3D U-Net:  16%|█▌        | 16/100 [01:01<05:18,  3.79s/it]Evaluating 3D U-Net:  17%|█▋        | 17/100 [01:04<05:05,  3.68s/it]Evaluating 3D U-Net:  18%|█▊        | 18/100 [01:08<04:54,  3.59s/it]Evaluating 3D U-Net:  19%|█▉        | 19/100 [01:11<04:48,  3.56s/it]Evaluating 3D U-Net:  20%|██        | 20/100 [01:17<05:47,  4.34s/it]Evaluating 3D U-Net:  20%|██        | 20/100 [01:17<05:11,  3.89s/it]
+  Performing blockage detection for 3D U-Net...
+
+3D U-Net Results:
+  Dice Score: 0.1619 ± 0.1394
+  IoU Score: 0.0951 ± 0.0924
+  Accuracy: 0.9333 ± 0.0259
+  Sensitivity: 0.1717 ± 0.1163
+  Specificity: 0.9589 ± 0.0306
+  Blockage Detection Accuracy: 1.0000
+  Blockage Detection Precision: 1.0000
+  Blockage Detection Recall: 1.0000
+  Blockage Detection F1: 1.0000
+  Mean Blockage Rate: 54.12%
+  Mean Severity: 0.9693
+Loaded weights from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_v-net.pth
+
+Evaluating V-Net...
+Evaluating V-Net:   0%|          | 0/100 [00:00<?, ?it/s]Evaluating V-Net:   1%|          | 1/100 [00:02<04:45,  2.89s/it]Evaluating V-Net:   2%|▏         | 2/100 [00:08<07:06,  4.35s/it]Evaluating V-Net:   3%|▎         | 3/100 [00:14<08:21,  5.17s/it]Evaluating V-Net:   4%|▍         | 4/100 [00:20<08:37,  5.39s/it]Evaluating V-Net:   5%|▌         | 5/100 [00:24<07:58,  5.03s/it]Evaluating V-Net:   6%|▌         | 6/100 [00:29<07:44,  4.94s/it]Evaluating V-Net:   7%|▋         | 7/100 [00:36<08:53,  5.74s/it]Evaluating V-Net:   8%|▊         | 8/100 [00:41<08:24,  5.48s/it]Evaluating V-Net:   9%|▉         | 9/100 [00:46<07:57,  5.25s/it]Evaluating V-Net:  10%|█         | 10/100 [00:50<07:33,  5.04s/it]Evaluating V-Net:  11%|█         | 11/100 [00:55<07:15,  4.90s/it]Evaluating V-Net:  12%|█▏        | 12/100 [01:00<07:02,  4.80s/it]Evaluating V-Net:  13%|█▎        | 13/100 [01:07<08:08,  5.62s/it]Evaluating V-Net:  14%|█▍        | 14/100 [01:11<07:09,  5.00s/it]Evaluating V-Net:  15%|█▌        | 15/100 [01:17<07:27,  5.26s/it]Evaluating V-Net:  16%|█▌        | 16/100 [01:23<07:54,  5.65s/it]Evaluating V-Net:  17%|█▋        | 17/100 [01:27<07:00,  5.07s/it]Evaluating V-Net:  18%|█▊        | 18/100 [01:32<06:48,  4.98s/it]Evaluating V-Net:  19%|█▉        | 19/100 [01:36<06:31,  4.83s/it]Evaluating V-Net:  20%|██        | 20/100 [01:41<06:18,  4.73s/it]Evaluating V-Net:  20%|██        | 20/100 [01:41<06:44,  5.06s/it]
+  Performing blockage detection for V-Net...
+
+V-Net Results:
+  Dice Score: 0.1899 ± 0.0691
+  IoU Score: 0.1065 ± 0.0434
+  Accuracy: 0.7166 ± 0.0217
+  Sensitivity: 0.9988 ± 0.0031
+  Specificity: 0.7071 ± 0.0195
+  Blockage Detection Accuracy: 1.0000
+  Blockage Detection Precision: 1.0000
+  Blockage Detection Recall: 1.0000
+  Blockage Detection F1: 1.0000
+  Mean Blockage Rate: 51.06%
+  Mean Severity: 0.9956
+Loaded weights from /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/best_resatt-3d-u-net.pth
+
+Evaluating ResAtt-3D-U-Net...
+Evaluating ResAtt-3D-U-Net:   0%|          | 0/100 [00:00<?, ?it/s]Evaluating ResAtt-3D-U-Net:   1%|          | 1/100 [00:00<01:29,  1.11it/s]Evaluating ResAtt-3D-U-Net:   2%|▏         | 2/100 [00:01<01:24,  1.16it/s]Evaluating ResAtt-3D-U-Net:   3%|▎         | 3/100 [00:02<01:25,  1.14it/s]Evaluating ResAtt-3D-U-Net:   4%|▍         | 4/100 [00:04<02:07,  1.33s/it]Evaluating ResAtt-3D-U-Net:   5%|▌         | 5/100 [00:06<02:39,  1.68s/it]Evaluating ResAtt-3D-U-Net:   6%|▌         | 6/100 [00:09<03:09,  2.02s/it]Evaluating ResAtt-3D-U-Net:   7%|▋         | 7/100 [00:11<03:01,  1.95s/it]Evaluating ResAtt-3D-U-Net:   8%|▊         | 8/100 [00:12<02:30,  1.63s/it]Evaluating ResAtt-3D-U-Net:   9%|▉         | 9/100 [00:13<02:09,  1.42s/it]Evaluating ResAtt-3D-U-Net:  10%|█         | 10/100 [00:14<01:55,  1.29s/it]Evaluating ResAtt-3D-U-Net:  11%|█         | 11/100 [00:15<01:48,  1.22s/it]Evaluating ResAtt-3D-U-Net:  12%|█▏        | 12/100 [00:16<01:45,  1.20s/it]Evaluating ResAtt-3D-U-Net:  13%|█▎        | 13/100 [00:17<01:46,  1.22s/it]Evaluating ResAtt-3D-U-Net:  14%|█▍        | 14/100 [00:19<01:47,  1.25s/it]Evaluating ResAtt-3D-U-Net:  15%|█▌        | 15/100 [00:20<01:47,  1.26s/it]Evaluating ResAtt-3D-U-Net:  16%|█▌        | 16/100 [00:21<01:45,  1.25s/it]Evaluating ResAtt-3D-U-Net:  17%|█▋        | 17/100 [00:22<01:42,  1.24s/it]Evaluating ResAtt-3D-U-Net:  18%|█▊        | 18/100 [00:24<01:39,  1.22s/it]Evaluating ResAtt-3D-U-Net:  19%|█▉        | 19/100 [00:25<01:38,  1.21s/it]Evaluating ResAtt-3D-U-Net:  20%|██        | 20/100 [00:26<01:36,  1.20s/it]Evaluating ResAtt-3D-U-Net:  20%|██        | 20/100 [00:26<01:45,  1.32s/it]
+  Performing blockage detection for ResAtt-3D-U-Net...
+
+ResAtt-3D-U-Net Results:
+  Dice Score: 0.8900 ± 0.0623
+  IoU Score: 0.8068 ± 0.0895
+  Accuracy: 0.9935 ± 0.0024
+  Sensitivity: 0.8789 ± 0.1106
+  Specificity: 0.9970 ± 0.0020
+  Blockage Detection Accuracy: 1.0000
+  Blockage Detection Precision: 1.0000
+  Blockage Detection Recall: 1.0000
+  Blockage Detection F1: 1.0000
+  Mean Blockage Rate: 49.39%
+  Mean Severity: 0.9666
+
+✓ Saved evaluation results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/evaluation_results.csv
+✓ Saved detailed results to /Users/abidhasan/Downloads/for thesis/dataset copy 6/src/evaluation_results.json
+✓ Saved comparison plot to model_comparison.png
+
+============================================================
+Evaluation completed!
+============================================================
+
+NOTE ON ACCURACY:
+You may observe that 'Accuracy' is very similar (e.g. 0.96) across all models.
+This is normal for 3D medical images with small targets (blockages) because different models
+all correctly predict the large amount of background pixels (Specificity).
+Please look at 'Dice Score' and 'IoU Score' for the true difference in segmentation performance.
+============================================================
+
+======================================================================
+STEP 3: BAR CHARTS (accuracy_comparison, blockage_rate_comparison)
+======================================================================
+======================================================================
+HEART BLOCKAGE DETECTION - QUICK VISUALIZATION
+======================================================================
+
+✓ Found existing evaluation results
+
+======================================================================
+MODEL COMPARISON RESULTS
+======================================================================
+Model                Dice     IoU      Accuracy   Blockage Rate   Blockage F1 
+----------------------------------------------------------------------
+3D U-Net             0.162    0.095    0.933      54.12          % 1.000       
+V-Net                0.190    0.107    0.717      51.06          % 1.000       
+ResAtt-3D-U-Net      0.890    0.807    0.993      49.39          % 1.000       
+
+======================================================================
+CREATING VISUALIZATIONS
+======================================================================
+
+1. Creating accuracy comparison charts...
+✓ Saved accuracy comparison to accuracy_comparison.png
+2. Creating blockage rate comparison charts...
+✓ Saved blockage rate comparison to blockage_rate_comparison.png
+
+✓ All visualizations created successfully!
+
+======================================================================
+COMPLETE!
+======================================================================
+
+Generated files:
+  📊 accuracy_comparison.png
+  📊 blockage_rate_comparison.png
+  📄 evaluation_results.csv
+  📄 evaluation_results.json
+
+======================================================================
+STEP 4: CREATING 3D VISUALIZATIONS
+======================================================================
+======================================================================
+CREATING 3D BLOCKAGE DETECTION VISUALIZATIONS
+======================================================================
+
+Loading sample image...
+✓ Loaded image with shape: (128, 128, 64)
+
+Processing 3D U-Net...
+✓ Saved 3D visualization: 3d_blockage_detection_3d_u_net_sample1.png
+
+Processing V-Net...
+✓ Saved 3D visualization: 3d_blockage_detection_v_net_sample2.png
+
+Processing ResAtt-3D-U-Net...
+✓ Saved 3D visualization: 3d_blockage_detection_resatt_3d_u_net_sample3.png
+
+======================================================================
+COMPLETE!
+======================================================================
+
+Generated 3D visualization files:
+  🖼️  3d_blockage_detection_3d_u_net_sample*.png
+  🖼️  3d_blockage_detection_v_net_sample*.png
+  🖼️  3d_blockage_detection_resatt_3d_u_net_sample*.png
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+
+Generated Files:
+----------------------------------------------------------------------
+  ✓ comprehensive_analysis_results.json                (56.4 KB)
+  ✓ comprehensive_analysis_results.csv                 (32.6 KB)
+  ✓ accuracy_comparison_comprehensive.png              (351.1 KB)
+  ✓ blockage_region_analysis.png                       (236.2 KB)
+  ✓ evaluation_results.csv                             (1.1 KB)
+  ✓ evaluation_results.json                            (2.2 KB)
+  ✓ model_comparison.png                               (292.1 KB)
+  ✓ accuracy_comparison.png                            (173.2 KB)
+  ✓ blockage_rate_comparison.png                       (302.2 KB)
+  ✓ 3d_blockage_detection_3d_u_net_sample1.png         (307.8 KB)
+  ✓ 3d_blockage_detection_v_net_sample2.png            (307.5 KB)
+  ✓ 3d_blockage_detection_resatt_3d_u_net_sample3.png  (310.1 KB)
+
+----------------------------------------------------------------------
+RESULTS SUMMARY
+----------------------------------------------------------------------
+
+Model                     Dice     IoU      Accuracy   Blockage Rate   Blockage F1 
+----------------------------------------------------------------------
+3D U-Net                  0.162    0.095    0.933      54.12          % 1.000       
+V-Net                     0.190    0.107    0.717      51.06          % 1.000       
+ResAtt-3D-U-Net           0.890    0.807    0.993      49.39          % 1.000       
+
+----------------------------------------------------------------------
+BEST PERFORMING MODELS:
+----------------------------------------------------------------------
+  Best Dice Score: ResAtt-3D-U-Net (0.890)
+  Best Blockage Detection: 3D U-Net (F1: 1.000)
+
+======================================================================
+ALL VISUALIZATIONS COMPLETE!
+======================================================================
+
+You can now view:
+  1. accuracy_comparison.png - Bar charts comparing Dice, IoU, and Accuracy
+  2. blockage_rate_comparison.png - Bar charts for blockage detection metrics
+  3. 3d_blockage_detection_*.png - 3D visualizations showing detected blockages
+
+All files are saved in the current directory.

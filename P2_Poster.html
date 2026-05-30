@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>P2 Poster — 3D Deep Neural Architecture for Heart Blockage Segmentation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.35;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 24px 24px;
+    }
+    .poster {
+      border: 2px solid #1a365d;
+      padding: 20px 24px 24px;
+      background: #fafafa;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1a365d;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 1.65rem;
+      color: #1a365d;
+      margin-bottom: 6px;
+    }
+    .authors {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .col {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      padding: 12px 14px;
+      border-radius: 4px;
+    }
+    h2 {
+      font-size: 0.95rem;
+      color: #1a365d;
+      margin: 0 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #cbd5e0;
+    }
+    p, li { font-size: 0.75rem; margin-bottom: 6px; }
+    ul { margin-left: 14px; margin-bottom: 8px; }
+    .abstract {
+      background: #edf2f7;
+      padding: 10px 12px;
+      border-left: 4px solid #1a365d;
+      margin-bottom: 14px;
+      font-size: 0.78rem;
+    }
+    .fig-block { margin: 10px 0; text-align: center; }
+    .fig-block img { max-width: 100%; height: auto; border: 1px solid #cbd5e0; }
+    .fig-cap { font-size: 0.65rem; color: #555; margin-top: 4px; }
+    .results-table { font-size: 0.7rem; border-collapse: collapse; width: 100%; margin: 8px 0; }
+    .results-table th, .results-table td { border: 1px solid #cbd5e0; padding: 3px 6px; text-align: left; }
+    .results-table th { background: #e2e8f0; color: #1a365d; }
+    .refs { font-size: 0.65rem; color: #555; margin-top: 8px; }
+    .refs p { margin-bottom: 2px; }
+    @media print {
+      body { padding: 0; max-width: 100%; }
+      .poster { border: none; padding: 12px; }
+      .three-col { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="header">
+      <h1>An Efficient 3D Deep Neural Architecture for Segmentation of Blockages in Heart Using Cardiac MRI Images</h1>
+      <p class="authors">[Author names] · [Supervisor] · [Department] · [University]</p>
+    </div>
+
+    <h2>Abstract</h2>
+    <div class="abstract">
+      We design and simulate multiple 3D deep learning solutions for cardiac structure segmentation and heart blockage detection from cardiac MRI (CO5: design and simulation; CO14: communication). We use the ACDC dataset (Bernard et al., 2018) and implement three 3D architectures—3D U-Net (Çiçek et al., 2016), V-Net (Milletari et al., 2016), and ResAtt-3D-U-Net (Oktay et al., 2018)—with a common blockage-detection and anatomical-region pipeline. ResAtt-3D-U-Net achieved the best segmentation (Dice 0.91, IoU 0.84, accuracy 99.6%), supporting an efficient 3D deep neural architecture for cardiac segmentation.
+    </div>
+
+    <div class="three-col">
+      <div class="col">
+        <h2>1. Dataset</h2>
+        <p><strong>ACDC (Dataset copy 7)</strong> — Automated Cardiac Diagnosis Challenge cardiac MRI (Bernard et al., 2018). NIfTI 3D volumes; training: patients 001–100, testing: 101–150. Preprocessing: resample to 128×128×64, normalize. Ground-truth masks for LV, RV, myocardium.</p>
+
+        <h2>2. Models (Ch. 4.2)</h2>
+        <ul>
+          <li><strong>3D U-Net:</strong> 4-level encoder–decoder, 32 base filters, skip connections (Çiçek et al., 2016).</li>
+          <li><strong>V-Net:</strong> Residual blocks, 5×5×5 conv, instance norm, 16 base filters (Milletari et al., 2016).</li>
+          <li><strong>ResAtt-3D-U-Net:</strong> Residual + attention gates, 16 base filters (Oktay et al., 2018).</li>
+        </ul>
+        <p>Common post-processing: blockage detection (vessel narrowing, disconnected regions, intensity anomalies) and anatomical region identification (LV, RV, myocardium, artery).</p>
+
+        <h2>3. Methodology (Ch. 4.1)</h2>
+        <p>Design process as per objectives, specifications, requirements, constraints → literature/dataset review (ACDC) → preliminary design of multiple alternative solutions → simulation for functional verification on test set.</p>
+      </div>
+
+      <div class="col">
+        <h2>4. Results — Accuracy &amp; Graphs</h2>
+        <table class="results-table">
+          <tr><th>Model</th><th>Dice</th><th>IoU</th><th>Accuracy</th></tr>
+          <tr><td>3D U-Net</td><td>~0</td><td>~0</td><td>0.974</td></tr>
+          <tr><td>V-Net</td><td>0.150</td><td>0.081</td><td>0.708</td></tr>
+          <tr><td>ResAtt-3D-U-Net</td><td><strong>0.911</strong></td><td><strong>0.836</strong></td><td><strong>0.996</strong></td></tr>
+        </table>
+        <div class="fig-block">
+          <img src="training_metrics.png" alt="Training loss and validation Dice" width="360">
+          <p class="fig-cap">Fig. 1 — Training loss and validation Dice score.</p>
+        </div>
+        <div class="fig-block">
+          <img src="model_comparison.png" alt="Model comparison metrics" width="360">
+          <p class="fig-cap">Fig. 2 — Model comparison (Dice, IoU, Accuracy, Blockage metrics).</p>
+        </div>
+        <div class="fig-block">
+          <img src="src/accuracy_comparison_comprehensive.png" alt="Comprehensive accuracy comparison" width="360">
+          <p class="fig-cap">Fig. 3 — Comprehensive accuracy comparison.</p>
+        </div>
+        <div class="fig-block">
+          <img src="src/blockage_region_analysis.png" alt="Blockage region analysis" width="360">
+          <p class="fig-cap">Fig. 4 — Blockage distribution by anatomical region.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <h2>5. Output Pictures</h2>
+        <div class="fig-block">
+          <img src="src/individual_sample_resatt_3d_u_net_sample8.png" alt="Sample output segmentation and blockage" width="320">
+          <p class="fig-cap">Fig. 5 — Sample output: segmentation and blockage detection (ResAtt-3D-U-Net).</p>
+        </div>
+
+        <h2>6. Conclusion</h2>
+        <p>ResAtt-3D-U-Net achieves the best segmentation and accuracy on ACDC test data. Design (CO5) and communication (CO14) are documented in the Pre-Thesis 2 Report. This poster supports P2 Poster Presentation (5 marks) and Defense Panel / Final Report (10 marks).</p>
+
+        <h2>References (APA 7)</h2>
+        <div class="refs">
+          <p>Bernard, O., et al. (2018). Deep learning techniques for automatic MRI cardiac multi-structures segmentation and diagnosis. <em>IEEE Trans. Medical Imaging</em>, 37(11), 2514–2525.</p>
+          <p>Çiçek, Ö., et al. (2016). 3D U-Net: Learning dense volumetric segmentation from sparse annotation. <em>MICCAI 2016</em> (pp. 424–432). Springer.</p>
+          <p>Milletari, F., et al. (2016). V-Net: Fully convolutional neural networks for volumetric medical image segmentation. <em>3DV</em> (pp. 565–571). IEEE.</p>
+          <p>Oktay, O., et al. (2018). Attention U-Net: Learning where to look for the pancreas. <em>arXiv</em>. https://arxiv.org/abs/1804.03999</p>
+          <p>Vesal, S., Maier, A., &amp; Ravikumar, N. (2020). Fully automated 3D cardiac MRI localisation and segmentation using deep neural networks. <em>Journal of Imaging</em>, 6(6), 65.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

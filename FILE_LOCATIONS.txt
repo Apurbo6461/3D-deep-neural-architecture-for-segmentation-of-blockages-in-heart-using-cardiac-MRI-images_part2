@@ -1,0 +1,93 @@
+================================================================================
+GENERATED FILES LOCATION
+================================================================================
+
+All files are located in:
+/Users/abidhasan/Downloads/for thesis/dataset copy/src/
+
+================================================================================
+📊 ACCURACY COMPARISON CHARTS
+================================================================================
+
+1. accuracy_comparison.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/accuracy_comparison.png
+   Description: Bar charts comparing Dice Score, IoU Score, and Accuracy for all 3 models
+   Size: ~173 KB
+
+================================================================================
+📊 BLOCKAGE RATE COMPARISON CHARTS
+================================================================================
+
+2. blockage_rate_comparison.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/blockage_rate_comparison.png
+   Description: Bar charts showing:
+     - Mean Blockage Rate (%)
+     - Blockage Detection Accuracy
+     - Blockage Detection F1 Score
+     - Precision vs Recall
+   Size: ~326 KB
+
+================================================================================
+🖼️  3D VISUALIZATIONS WITH BLOCKAGE DETECTION
+================================================================================
+
+3. 3d_blockage_detection_3d_u_net_sample1.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_3d_u_net_sample1.png
+   Size: ~308 KB
+
+4. 3d_blockage_detection_3d_u_net_sample2.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_3d_u_net_sample2.png
+   Size: ~733 KB
+
+5. 3d_blockage_detection_v_net_sample1.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_v_net_sample1.png
+   Size: ~793 KB
+
+6. 3d_blockage_detection_v_net_sample2.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_v_net_sample2.png
+   Size: ~307 KB
+
+7. 3d_blockage_detection_resatt_3d_u_net_sample1.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_resatt_3d_u_net_sample1.png
+   Size: ~734 KB
+
+8. 3d_blockage_detection_resatt_3d_u_net_sample2.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_resatt_3d_u_net_sample2.png
+   Size: ~735 KB
+
+9. 3d_blockage_detection_resatt_3d_u_net_sample3.png
+   Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/3d_blockage_detection_resatt_3d_u_net_sample3.png
+   Size: ~310 KB
+
+Each 3D visualization shows:
+  - Original image slice
+  - Segmentation overlay (heart structure)
+  - Detected blockages (highlighted in red)
+  - 3D volume view with blockage points
+
+================================================================================
+📄 DATA FILES
+================================================================================
+
+10. evaluation_results.csv
+    Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/evaluation_results.csv
+    Description: Tabular results in CSV format
+    Size: ~596 bytes
+
+11. evaluation_results.json
+    Location: /Users/abidhasan/Downloads/for thesis/dataset copy/src/evaluation_results.json
+    Description: Detailed results in JSON format
+    Size: ~1.6 KB
+
+================================================================================
+QUICK ACCESS
+================================================================================
+
+To open the folder in Finder (Mac):
+  open "/Users/abidhasan/Downloads/for thesis/dataset copy/src"
+
+To list all files:
+  cd "/Users/abidhasan/Downloads/for thesis/dataset copy/src"
+  ls -lh *.png *.csv *.json
+
+================================================================================

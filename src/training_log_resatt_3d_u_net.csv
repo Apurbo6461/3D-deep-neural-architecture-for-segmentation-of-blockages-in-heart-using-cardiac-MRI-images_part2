@@ -1,0 +1,2 @@
+epoch,train_loss,val_dice,val_iou,val_acc
+0,0.0,0.0,0.0,0.0
