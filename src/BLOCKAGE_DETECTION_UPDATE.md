@@ -31,9 +31,11 @@ A new scoring system was implemented to provide a defensible "Blockage Likelihoo
 - **1-2 Points:** Low/Moderate Suspicion
 - **3+ Points:** High Suspicion (Severe thickening impairment + cavity abnormality + low EF)
 
-## 4. Enhanced Visualizations
-The output plots (`individual_sample_...png`) have been updated to seamlessly integrate this new framework:
-- The exact regions where **Regional Wall Thickening is < 35%** are now mapped back onto the original MRI and highlighted in a 'hot' colormap to "show perfectly on the plots where the blockages are."
-- The metrics summary panel now prints the full suite of dysfunction parameters: EF%, Cavity Deformation %, Mean Wall Thickness, and the Final Abnormality Score.
+## 4. Enhanced Group-Level Visualizations
+The output plots have been specifically tailored to address the ACDC dataset's 5 distinct patient cohorts (NOR, MINF, DCM, HCM, RV):
+
+- **Targeted Group Sampling:** The script automatically parses the `Info.cfg` files to perfectly isolate 1 patient from each of the 5 pathological groups to ensure all disease types are systematically documented in the generated images (`NOR_group_...png`, `MINF_group_...png`, etc).
+- **Individual Anatomical Segmentation:** The lower panel of the visualization breaks down the global prediction into distinct structures: the Left Ventricle (LV) in red, Right Ventricle (RV) in blue, and Myocardium in green.
+- **Localized Deformity Mapping:** Rather than a single global blockage map, the deformity (regions with `<35%` thickening) is isolated and explicitly rendered *inside* its respective anatomical structure (e.g. if the blockage is primarily located in the myocardial wall, it will glow perfectly 'hot' on the Myocardium-specific subplot).
 
 This methodology strongly aligns the evaluation pipeline with the theoretical capabilities of cardiac MRI analysis, making the thesis's proposed framework robust and academically defensible.
