@@ -75,7 +75,7 @@ def run_blockage_detection_demo():
     test_dataset = MedicalDataset(root_dir=TEST_DIR, target_shape=TARGET_SHAPE)
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=0)
 
-    detector = BlockageDetector(threshold_narrowing=0.3, min_blockage_size=5)
+    detector = BlockageDetector(threshold_thickening=0.3, min_blockage_size=5)
     all_results = []
 
     for model_name, model in models.items():

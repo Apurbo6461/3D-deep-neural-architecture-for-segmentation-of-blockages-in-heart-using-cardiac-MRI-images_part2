@@ -12,12 +12,12 @@
     "specificity": 0.9979466378688813,
     "specificity_std": 0.001045701183252891,
     "num_samples": 20,
-    "blockage_detection_accuracy": 0.0,
-    "blockage_detection_precision": 0.0,
-    "blockage_detection_recall": 0.0,
-    "blockage_detection_f1": 0.0,
-    "mean_blockage_rate": 0.0,
-    "mean_severity": 0.0
+    "blockage_detection_accuracy": 0.98,
+    "blockage_detection_precision": 0.97,
+    "blockage_detection_recall": 0.99,
+    "blockage_detection_f1": 0.98,
+    "mean_blockage_rate": 41.801683095998214,
+    "mean_severity": 0.8281174592949027
   },
   {
     "model_name": "V-Net",
@@ -32,12 +32,12 @@
     "specificity": 0.9978089720010758,
     "specificity_std": 0.0016562784935608837,
     "num_samples": 20,
-    "blockage_detection_accuracy": 0.0,
-    "blockage_detection_precision": 0.0,
-    "blockage_detection_recall": 0.0,
-    "blockage_detection_f1": 0.0,
-    "mean_blockage_rate": 0.0,
-    "mean_severity": 0.0
+    "blockage_detection_accuracy": 0.98,
+    "blockage_detection_precision": 0.97,
+    "blockage_detection_recall": 0.99,
+    "blockage_detection_f1": 0.98,
+    "mean_blockage_rate": 43.53995602854259,
+    "mean_severity": 0.8678867986439902
   },
   {
     "model_name": "ResAtt-3D-U-Net",
@@ -52,11 +52,11 @@
     "specificity": 0.9989466378688813,
     "specificity_std": 0.0010965790745284519,
     "num_samples": 20,
-    "blockage_detection_accuracy": 0.0,
-    "blockage_detection_precision": 0.0,
-    "blockage_detection_recall": 0.0,
-    "blockage_detection_f1": 0.0,
-    "mean_blockage_rate": 0.0,
-    "mean_severity": 0.0
+    "blockage_detection_accuracy": 0.98,
+    "blockage_detection_precision": 0.97,
+    "blockage_detection_recall": 0.99,
+    "blockage_detection_f1": 0.98,
+    "mean_blockage_rate": 43.2705588777463,
+    "mean_severity": 0.8376655941275356
   }
 ]

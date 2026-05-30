@@ -116,7 +116,7 @@ def evaluate_model(model, model_name, test_loader, device, model_path=None, num_
     # Blockage detection
     print(f"  Performing blockage detection for {model_name}...")
     try:
-        detector = BlockageDetector(threshold_narrowing=0.3, min_blockage_size=5)
+        detector = BlockageDetector(threshold_thickening=0.3, min_blockage_size=5)
         
         blockage_metrics = detector.calculate_blockage_detection_rate(
             all_predictions, all_ground_truths, all_original_images

@@ -222,7 +222,7 @@ def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
     model = model.to(device)
     model.eval()
     
-    detector = BlockageDetector(threshold_narrowing=0.3, min_blockage_size=5)
+    detector = BlockageDetector(threshold_thickening=0.3, min_blockage_size=5)
     
     sample_count = 0
     
