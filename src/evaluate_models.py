@@ -14,7 +14,7 @@ from utils import (
     calculate_dice_score, calculate_iou, calculate_accuracy,
     calculate_sensitivity, calculate_specificity
 )
-from blockage_detection import BlockageDetector
+from blockage_detection import CardiacDysfunctionDetector
 
 def evaluate_model(model, model_name, test_loader, device, model_path=None, num_samples=None):
     """Evaluate a model on test set and return metrics. If num_samples is set, only evaluate that many samples."""
@@ -116,7 +116,7 @@ def evaluate_model(model, model_name, test_loader, device, model_path=None, num_
     # Blockage detection
     print(f"  Performing blockage detection for {model_name}...")
     try:
-        detector = BlockageDetector(threshold_thickening=0.3, min_blockage_size=5)
+        detector = CardiacDysfunctionDetector(threshold_thickening=0.35, min_blockage_size=5)
         
         blockage_metrics = detector.calculate_blockage_detection_rate(
             all_predictions, all_ground_truths, all_original_images

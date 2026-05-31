@@ -15,7 +15,7 @@ from data.dataset import MedicalDataset
 from models.unet3d_standard import UNet3D
 from models.vnet import VNet3D
 from models.res_att_unet3d import ResAttUNet3D
-from blockage_detection import BlockageDetector
+from blockage_detection import CardiacDysfunctionDetector
 from utils import calculate_dice_score, calculate_iou, calculate_accuracy
 
 def load_evaluation_results():
@@ -222,7 +222,7 @@ def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
     model = model.to(device)
     model.eval()
     
-    detector = BlockageDetector(threshold_thickening=0.3, min_blockage_size=5)
+    detector = CardiacDysfunctionDetector(threshold_thickening=0.35, min_blockage_size=5)
     
     sample_count = 0
     

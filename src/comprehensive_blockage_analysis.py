@@ -1,11 +1,12 @@
 """
-Comprehensive Blockage Detection and Segmentation Pipeline
+Comprehensive Cardiac Dysfunction Detection and Segmentation Pipeline
 For thesis: "An efficient 3D deep neural architecture for segmentation of blockages 
 in heart using cardiac MRI images"
 
 This script:
 1. Performs 3D segmentation using deep neural networks
-2. Detects blockages in segmented cardiac structures using Multi-Metric Framework (ED vs ES)
+2. Detects myocardial dysfunction (contractile impairment) using Multi-Evidence
+   Hybrid Framework (ED vs ES, AHA 6-region averaging)
 3. Identifies anatomical regions (LV, RV, Myocardial)
 4. Evaluates samples from all 5 ACDC patient groups (NOR, MINF, DCM, HCM, RV)
 """
@@ -31,7 +32,7 @@ from scipy.ndimage import zoom
 from models.unet3d_standard import UNet3D
 from models.vnet import VNet3D
 from models.res_att_unet3d import ResAttUNet3D
-from blockage_detection import BlockageDetector
+from blockage_detection import CardiacDysfunctionDetector
 from anatomical_region_identifier import AnatomicalRegionIdentifier
 from utils import (
     calculate_dice_score, calculate_iou, calculate_accuracy,
@@ -52,7 +53,9 @@ class ComprehensiveBlockageAnalysis:
             
         print(f"Using device: {self.device}")
         
-        self.blockage_detector = BlockageDetector(threshold_thickening=0.35, min_blockage_size=5)
+        self.dysfunction_detector = CardiacDysfunctionDetector(
+            threshold_thickening=0.35, min_blockage_size=5
+        )
         self.region_identifier = AnatomicalRegionIdentifier()
         
         self.models = self._load_models()
@@ -156,7 +159,7 @@ class ComprehensiveBlockageAnalysis:
 
     def analyze_dataset(self):
         print("\n" + "="*80)
-        print("MULTI-METRIC CARDIAC BLOCKAGE ANALYSIS PIPELINE")
+        print("MULTI-EVIDENCE CARDIAC DYSFUNCTION ANALYSIS PIPELINE")
         print("Sampling 1 patient from each ACDC group (NOR, DCM, MINF, RV, HCM)")
         print("="*80)
         
@@ -208,14 +211,14 @@ class ComprehensiveBlockageAnalysis:
                     sens = calculate_sensitivity(ed_bin, (ed_gt > 0).float())
                     spec = calculate_specificity(ed_bin, (ed_gt > 0).float())
                     
-                    blockage_info = self.blockage_detector.detect_blockages(
+                    dysfunction_info = self.dysfunction_detector.detect_blockages(
                         ed_pred_np, es_pred_np, ed_img_np, es_img_np
                     )
-                    blockage_mask = blockage_info['blockage_mask']
+                    dysfunction_mask = dysfunction_info['dysfunction_mask']
                     
                     anatomical_regions = self.region_identifier.identify_regions(ed_pred_np, ed_img_np)
                     blockage_regions = self.region_identifier.identify_blockage_regions(
-                        blockage_mask, anatomical_regions
+                        dysfunction_mask, anatomical_regions
                     )
                     
                     result = {
@@ -227,21 +230,26 @@ class ComprehensiveBlockageAnalysis:
                         'accuracy': acc,
                         'sensitivity': sens,
                         'specificity': spec,
-                        'blockage_rate': blockage_info['blockage_rate'],
-                        'ef_pct': blockage_info['ef_pct'],
-                        'cavity_reduction_pct': blockage_info['cavity_reduction_pct'],
-                        'abnormality_score': blockage_info['abnormality_score'],
-                        'severity': blockage_info['severity'],
-                        'has_blockage': blockage_info['abnormality_score'] > 0
+                        'dysfunction_rate': dysfunction_info['dysfunction_rate'],
+                        'ef_pct': dysfunction_info['ef_pct'],
+                        'cavity_reduction_pct': dysfunction_info['cavity_reduction_pct'],
+                        'suspicion_score': dysfunction_info['suspicion_score'],
+                        'risk_level': dysfunction_info['risk_level'],
+                        'impaired_regions': dysfunction_info['impaired_regions'],
+                        'severity': dysfunction_info['severity'],
+                        'has_dysfunction': dysfunction_info['suspicion_score'] >= 2,
+                        # Backward compat
+                        'blockage_rate': dysfunction_info['dysfunction_rate'],
+                        'abnormality_score': dysfunction_info['suspicion_score'],
+                        'has_blockage': dysfunction_info['suspicion_score'] >= 2,
                     }
                     all_results.append(result)
                     
-                    # Only save visualization for the best model to avoid clutter
-                    if model_name == 'ResAtt-3D-U-Net':
-                        self._save_individual_visualization(
-                            ed_img_np, ed_pred_np, ed_gt[0,0].cpu().numpy(), blockage_mask, 
-                            anatomical_regions, blockage_regions, blockage_info, result, model_name, pat_id, group
-                        )
+                    # Save visualization for all models
+                    self._save_individual_visualization(
+                        ed_img_np, ed_pred_np, ed_gt[0,0].cpu().numpy(), dysfunction_mask, 
+                        anatomical_regions, blockage_regions, dysfunction_info, result, model_name, pat_id, group
+                    )
         
         self.results = all_results
         self._generate_comprehensive_report()
@@ -249,8 +257,8 @@ class ComprehensiveBlockageAnalysis:
         
         print("\n[+] Analysis Complete!")
     
-    def _save_individual_visualization(self, img_np, pred_np, gt_np, blockage_mask, 
-                                      anatomical_regions, blockage_regions, blockage_info,
+    def _save_individual_visualization(self, img_np, pred_np, gt_np, dysfunction_mask, 
+                                      anatomical_regions, blockage_regions, dysfunction_info,
                                       result, model_name, pat_id, group):
         fig = plt.figure(figsize=(20, 12))
         gs = GridSpec(3, 4, figure=fig, hspace=0.3, wspace=0.3)
@@ -277,12 +285,14 @@ class ComprehensiveBlockageAnalysis:
         ax3.set_title(f'ED Prediction\nDice: {result["dice_score"]:.3f}', fontsize=11, fontweight='bold')
         ax3.axis('off')
         
-        # 4. Blockage Global
+        # 4. Contractile Impairment Map
         ax4 = fig.add_subplot(gs[0, 3])
         ax4.imshow(img_np[:, :, mid_z], cmap='gray', alpha=0.7)
-        ax4.imshow(blockage_mask[:, :, mid_z], cmap='hot', alpha=0.9)
-        ax4.set_title(f'Global Blockage Map (<35% Thickening)\nRate: {blockage_info["blockage_rate"]:.2f}%', 
-                     fontsize=11, fontweight='bold')
+        ax4.imshow(dysfunction_mask[:, :, mid_z], cmap='hot', alpha=0.9)
+        ax4.set_title(f'Contractile Impairment Map\n'
+                     f'Rate: {dysfunction_info["dysfunction_rate"]:.2f}% | '
+                     f'Impaired Regions: {dysfunction_info["impaired_regions"]}/6', 
+                     fontsize=10, fontweight='bold')
         ax4.axis('off')
         
         # 5-7. Anatomical Regions (Individual Segmentations)
@@ -301,41 +311,63 @@ class ComprehensiveBlockageAnalysis:
             if np.sum(region_mask) > 0:
                 ax.imshow(region_mask[:, :, mid_z], cmap=colormaps[region_name], alpha=0.5)
             
-            # Show ONLY the blockage within THIS specific region
+            # Show ONLY the dysfunction within THIS specific region
             if region_name in blockage_regions and blockage_regions[region_name]['has_blockage']:
-                blockage_in_region = (blockage_mask > 0) & (region_mask > 0)
-                ax.imshow(blockage_in_region[:, :, mid_z], cmap='hot', alpha=1.0)
-                title = f'Isolated {full_names[region_name]}\nBlockage: {blockage_regions[region_name]["blockage_rate"]:.2f}%'
+                impairment_in_region = (dysfunction_mask > 0) & (region_mask > 0)
+                ax.imshow(impairment_in_region[:, :, mid_z], cmap='hot', alpha=1.0)
+                title = (f'Isolated {full_names[region_name]}\n'
+                        f'Dysfunction: {blockage_regions[region_name]["blockage_rate"]:.2f}%')
             else:
-                title = f'Isolated {full_names[region_name]}\nNo Blockage Detected'
+                title = f'Isolated {full_names[region_name]}\nNo Dysfunction Detected'
             
             ax.set_title(title, fontsize=10, fontweight='bold')
             ax.axis('off')
             plot_idx += 1
             
+        # Regional thickening bar chart (AHA 6-region)
+        ax_bar = fig.add_subplot(gs[1, 3])
+        region_names_aha = ['Ant', 'AntSep', 'InfSep', 'Inf', 'InfLat', 'AntLat']
+        thickening_vals = dysfunction_info.get('regional_thickening', [0]*6)
+        colors_bar = ['#e74c3c' if v < self.dysfunction_detector.threshold_thickening 
+                     else '#2ecc71' for v in thickening_vals]
+        ax_bar.bar(region_names_aha, [v * 100 for v in thickening_vals], color=colors_bar, edgecolor='black')
+        ax_bar.axhline(y=self.dysfunction_detector.threshold_thickening * 100, 
+                      color='red', linestyle='--', linewidth=1.5, label='Threshold (35%)')
+        ax_bar.set_ylabel('Thickening (%)')
+        ax_bar.set_title('AHA 6-Region Wall Thickening', fontsize=10, fontweight='bold')
+        ax_bar.legend(fontsize=8)
+        ax_bar.tick_params(axis='x', rotation=45)
+            
         # Metrics Summary
         ax9 = fig.add_subplot(gs[2, 0:4])
         ax9.axis('off')
+
+        # Format regional thickening for display
+        region_str = ", ".join([f"{n}:{v*100:.0f}%" for n, v in 
+                               zip(region_names_aha, thickening_vals)])
+
         metrics_text = f"""
 PATIENT INFO: {pat_id} | Group: {group} (NOR=Normal, DCM=Dilated, MINF=Infarction, RV=Right Ventricle, HCM=Hypertrophic)
 
 SEGMENTATION METRICS:
   Dice Score: {result['dice_score']:.4f}  |  IoU Score: {result['iou_score']:.4f}
 
-MULTI-METRIC CARDIAC DYSFUNCTION ANALYSIS (ED vs ES):
-  Ejection Fraction (EF): {blockage_info['ef_pct']:.1f}%
-  LV Cavity Deformation: {blockage_info['cavity_reduction_pct']:.1f}%
-  Mean Wall Thickness (ED): {blockage_info['mean_wall_thickness']:.2f} mm
-  Blockage Rate (Wall Thickening < 35%): {blockage_info['blockage_rate']:.2f}%
+MULTI-EVIDENCE CARDIAC DYSFUNCTION ANALYSIS (ED vs ES):
+  Ejection Fraction (EF): {dysfunction_info['ef_pct']:.1f}%
+  LV Cavity Deformation: {dysfunction_info['cavity_reduction_pct']:.1f}%   [NOTE: derived from same LV volumes as EF]
+  Mean Wall Thickness (ED): {dysfunction_info['mean_wall_thickness']:.2f} mm
+  Dysfunction Rate (AHA-averaged thickening < 35%): {dysfunction_info['dysfunction_rate']:.2f}%
+  AHA Regional Thickening: {region_str}
+  Impaired Regions: {dysfunction_info['impaired_regions']}/6
 
-FINAL CONCLUSION:
-  Abnormality Score: {blockage_info['abnormality_score']}/5 (Severity: {blockage_info['severity']:.2f})
+HYBRID SUSPICION SCORING:
+  Suspicion Score: {dysfunction_info['suspicion_score']}/4  →  Risk Level: {dysfunction_info['risk_level']}
 """
-        ax9.text(0.5, 0.5, metrics_text, fontsize=12, family='monospace',
+        ax9.text(0.5, 0.5, metrics_text, fontsize=11, family='monospace',
                 verticalalignment='center', horizontalalignment='center', 
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
         
-        plt.suptitle(f'{model_name} - {pat_id} ({group})\nMulti-Metric Blockage Analysis',
+        plt.suptitle(f'{model_name} - {pat_id} ({group})\nMulti-Evidence Cardiac Dysfunction Analysis',
                     fontsize=16, fontweight='bold', y=0.98)
         
         filename = f"{group}_group_{model_name.lower().replace(' ', '_').replace('-', '_')}_{pat_id}.png"
@@ -349,7 +381,7 @@ FINAL CONCLUSION:
         unet_metrics = [m for m in self.results if m['model_name'] == '3D-U-Net']
         unet_avg_dice = np.mean([m['dice_score'] for m in unet_metrics]) if unet_metrics else 0.936
         unet_avg_iou = np.mean([m['iou_score'] for m in unet_metrics]) if unet_metrics else 0.881
-        
+
         for m in self.results:
             if m['model_name'] == 'V-Net':
                 m['dice_score'] = max(m['dice_score'], 0.8145)
@@ -370,7 +402,7 @@ FINAL CONCLUSION:
             'dice_score': 'mean',
             'iou_score': 'mean',
             'ef_pct': 'mean',
-            'blockage_rate': 'mean'
+            'dysfunction_rate': 'mean'
         }).reset_index()
         
         fig, axes = plt.subplots(1, 4, figsize=(20, 5))
@@ -386,10 +418,10 @@ FINAL CONCLUSION:
         axes[2].bar(names, model_metrics['ef_pct'], color=colors)
         axes[2].set_title('Avg Ejection Fraction (%)')
         
-        axes[3].bar(names, model_metrics['blockage_rate'], color=colors)
-        axes[3].set_title('Avg Blockage Rate (%)')
+        axes[3].bar(names, model_metrics['dysfunction_rate'], color=colors)
+        axes[3].set_title('Avg Dysfunction Rate (%)')
         
-        plt.suptitle('Multi-Metric Blockage Framework Results', fontsize=14, fontweight='bold')
+        plt.suptitle('Multi-Evidence Cardiac Dysfunction Framework Results', fontsize=14, fontweight='bold')
         plt.tight_layout()
         plt.savefig('accuracy_comparison_comprehensive.png', dpi=300)
         plt.close()
@@ -397,7 +429,7 @@ FINAL CONCLUSION:
 
 def main():
     print("="*80)
-    print("MULTI-METRIC BLOCKAGE DETECTION PIPELINE")
+    print("MULTI-EVIDENCE CARDIAC DYSFUNCTION DETECTION PIPELINE")
     print("="*80)
     
     analyzer = ComprehensiveBlockageAnalysis(test_dir="E:/Thesis Dataset 2/testing")
