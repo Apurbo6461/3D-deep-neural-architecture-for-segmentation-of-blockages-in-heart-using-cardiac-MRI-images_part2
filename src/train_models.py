@@ -42,18 +42,14 @@ def train_model(model, model_name, train_loader, val_loader, device, epochs=20, 
         for imgs, gts in pbar:
             imgs = imgs.to(device)
             gts = gts.to(device)
-            
-            # Convert GT to binary
             gts_binary = (gts > 0).float()
-            
             optimizer.zero_grad()
             preds = model(imgs)
             
-            # Apply sigmoid for binary output
+            # Applied sigmoid for binary output
             if preds.shape[1] == 1:
                 loss = criterion(preds, gts_binary)
             else:
-                # Multi-class: use first channel or argmax
                 loss = criterion(preds[:, 0:1], gts_binary)
             
             loss.backward()
@@ -76,7 +72,7 @@ def train_model(model, model_name, train_loader, val_loader, device, epochs=20, 
                 
                 preds = model(imgs)
                 
-                # Apply sigmoid and threshold
+                # Applied sigmoid and threshold
                 if preds.shape[1] == 1:
                     preds_sigmoid = torch.sigmoid(preds)
                     preds_binary = (preds_sigmoid > 0.5).float()
@@ -105,10 +101,9 @@ def train_model(model, model_name, train_loader, val_loader, device, epochs=20, 
         
         scheduler.step(avg_loss)
         
-        # Save best model
+        # Saving best model
         if val_dice > best_val_dice:
             best_val_dice = val_dice
-            # Use hyphens to match expected filename format
             model_path = f"best_{model_name.lower().replace(' ', '-')}.pth"
             torch.save(model.state_dict(), model_path)
             print(f"✓ Saved best model (Dice: {best_val_dice:.4f}) to {model_path}")
@@ -122,7 +117,7 @@ def main():
     EPOCHS = 20
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     if DEVICE == "cpu" and torch.backends.mps.is_available():
-        DEVICE = "mps"  # For Mac M1/M2/M3
+        DEVICE = "mps"  
     
     ROOT_DIR = "E:/Thesis Dataset 2/training"
     TARGET_SHAPE = (128, 128, 64)
@@ -131,10 +126,10 @@ def main():
     print(f"Using device: {DEVICE}")
     print(f"Target shape: {TARGET_SHAPE}")
     
-    # Load dataset
+    # Loading dataset
     full_dataset = MedicalDataset(root_dir=ROOT_DIR, target_shape=TARGET_SHAPE)
     
-    # Split Train/Val
+    # Splitting Train/Val
     val_percent = 0.2
     n_val = int(len(full_dataset) * val_percent)
     n_train = len(full_dataset) - n_val
@@ -147,19 +142,19 @@ def main():
     train_loader = DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS)
     val_loader = DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS)
     
-    # Define models to train
+    # Defining models to train
     models_to_train = {
         '3D-U-Net':        UNet3D(in_channels=1, out_channels=1),
         'V-Net':           VNet3D(in_channels=1, out_channels=1),
         'ResAtt-3D-U-Net': ResAttUNet3D(in_channels=1, out_channels=1, base_filters=16),
     }
     
-    # Train all models
+    # Training all models
     all_histories = {}
     trained_models = {}
     
     for model_name, model in models_to_train.items():
-        # Check if model already exists
+        # Checking if model already exists
         model_path = f"best_{model_name.lower().replace(' ', '-')}.pth"
         if os.path.exists(model_path):
             print(f"⚠ Model {model_name} already exists at {model_path}")
@@ -172,7 +167,7 @@ def main():
         all_histories[model_name] = history
         trained_models[model_name] = trained_model
     
-    # Save training histories
+    # Saving training histories
     for model_name, history in all_histories.items():
         df = pd.DataFrame(history)
         filename = f"training_log_{model_name.lower().replace(' ', '_').replace('-', '_')}.csv"

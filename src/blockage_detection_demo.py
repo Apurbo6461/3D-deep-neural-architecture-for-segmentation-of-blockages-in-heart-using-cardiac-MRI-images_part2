@@ -26,7 +26,7 @@ from models.unet3d import ResAttUNet3D
 from blockage_detection import BlockageDetector
 
 # Config
-TEST_DIR = "/Users/abidhasan/Downloads/for thesis/dataset copy 6/testing"
+TEST_DIR = "E:/Thesis Dataset 2/testing"
 TARGET_SHAPE = (128, 128, 64)
 SAMPLES_PER_MODEL = 5
 

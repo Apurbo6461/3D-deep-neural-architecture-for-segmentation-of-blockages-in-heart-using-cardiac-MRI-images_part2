@@ -204,7 +204,7 @@ def create_blockage_rate_comparison_bar_chart(results=None):
 
 def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
     """Create 3D visualizations showing original image, segmentation, and detected blockages."""
-    TEST_DIR = "/Users/abidhasan/Downloads/for thesis/dataset copy 6/testing"
+    TEST_DIR = "E:/Thesis Dataset 2/testing"
     TARGET_SHAPE = (128, 128, 64)
     
     # Load test dataset
@@ -212,8 +212,6 @@ def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=0)
     
     # Load model weights if available
-    # Fixing filename format logic to match training/evaluation
-    # Training saves as: best_{model_name.lower().replace(' ', '-')}.pth (e.g. best_resatt-3d-u-net.pth)
     model_path = f"best_{model_name.lower().replace(' ', '-')}.pth"
     if os.path.exists(model_path):
         model.load_state_dict(torch.load(model_path, map_location=device))

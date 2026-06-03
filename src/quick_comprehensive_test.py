@@ -9,7 +9,7 @@ from comprehensive_blockage_analysis import ComprehensiveBlockageAnalysis
 
 def main():
     """Quick test with limited samples."""
-    TEST_DIR = "/Users/abidhasan/Downloads/for thesis/dataset copy 5/testing"
+    TEST_DIR = "E:/Thesis Dataset 2/testing"
     TARGET_SHAPE = (128, 128, 64)
     NUM_SAMPLES = 3  # Just 3 samples for quick test
     
