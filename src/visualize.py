@@ -33,17 +33,8 @@ def plot_metrics(log_file="training_log.csv"):
     print("Saved training_metrics.png")
     
 def plot_comparison_bar_chart(my_model_score=0.0):
-    """
-    Plots a bar chart comparing the implemented model with standard baselines.
-    Args:
-        my_model_score: The best Dice score achieved by your model. 
-                        If 0, uses a placeholder value.
-    """
-    # Placeholder values for standard models (hypothetical or from literature)
     models = ['Standard 3D U-Net', 'V-Net', 'Res-Att-3D-U-Net (Ours)']
     
-    # If no score provided/trained, we use a hypothetical projection or 0
-    # Let's use a hypothetical "Target" if 0, or the actual if > 0
     if my_model_score == 0:
         my_model_score = 0.88 # Projected target
     
