@@ -1,8 +1,3 @@
-"""
-Efficiency Analysis Module
-Measures and reports efficiency metrics for the 3D deep neural architectures.
-This justifies the "efficient" part of the thesis title.
-"""
 import torch
 import numpy as np
 import time
@@ -22,7 +17,7 @@ except ImportError:
 from data.dataset import MedicalDataset
 from models.unet3d_standard import UNet3D
 from models.vnet import VNet3D
-from models.unet3d import ResAttUNet3D
+from models.res_att_unet3d import ResAttUNet3D
 
 class EfficiencyAnalyzer:
     """
@@ -172,12 +167,7 @@ class EfficiencyAnalyzer:
         }
     
     def calculate_flops(self, model, input_shape=(1, 1, 128, 128, 64)):
-        """Estimate FLOPs (Floating Point Operations) for the model."""
-        # Simple estimation based on architecture
-        # This is a rough estimate - for exact FLOPs, use tools like thop or fvcore
-        
         def count_conv3d_flops(layer, input_shape):
-            """Count FLOPs for a 3D convolution."""
             if not isinstance(layer, torch.nn.Conv3d):
                 return 0
             
@@ -186,7 +176,7 @@ class EfficiencyAnalyzer:
             in_channels = layer.in_channels
             
             # Output shape
-            output_size = np.prod(input_shape[2:])  # H * W * D
+            output_size = np.prod(input_shape[2:])  
             
             # FLOPs = kernel_ops * output_elements
             kernel_ops = np.prod(kernel_size) * in_channels
@@ -198,23 +188,15 @@ class EfficiencyAnalyzer:
         total_flops = 0
         dummy_input = torch.randn(input_shape).to(self.device)
         
-        # This is a simplified estimation
-        # For accurate FLOPs, consider using thop or fvcore library
         model.eval()
         with torch.no_grad():
             _ = model(dummy_input)
-        
-        # Estimate based on model architecture
-        # This is a placeholder - actual FLOP counting requires more sophisticated tools
-        # For now, we'll provide a relative estimate
-        
         return {
             'estimated_flops_g': 'N/A - Use thop/fvcore for exact count',
             'note': 'FLOP counting requires specialized tools. This is a placeholder.'
         }
     
     def analyze_model_efficiency(self, model, model_name, test_loader):
-        """Comprehensive efficiency analysis for a model."""
         print(f"\nAnalyzing efficiency for {model_name}...")
         
         # Parameter count
@@ -248,7 +230,6 @@ class EfficiencyAnalyzer:
         return efficiency_metrics
     
     def compare_models_efficiency(self, models_config, test_dir, target_shape=(128, 128, 64)):
-        """Compare efficiency across all models."""
         print("="*80)
         print("EFFICIENCY ANALYSIS FOR 3D DEEP NEURAL ARCHITECTURES")
         print("="*80)
@@ -279,7 +260,6 @@ class EfficiencyAnalyzer:
         return all_metrics
     
     def generate_efficiency_report(self, efficiency_metrics, output_dir='.'):
-        """Generate efficiency comparison report and visualizations."""
         if not efficiency_metrics:
             print("No efficiency metrics to report.")
             return
@@ -301,7 +281,6 @@ class EfficiencyAnalyzer:
         self._create_efficiency_visualizations(efficiency_metrics, output_dir)
     
     def _create_efficiency_visualizations(self, efficiency_metrics, output_dir):
-        """Create efficiency comparison visualizations."""
         fig, axes = plt.subplots(2, 3, figsize=(18, 12))
         
         model_names = [m['model_name'] for m in efficiency_metrics]

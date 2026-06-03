@@ -1,6 +1,3 @@
-"""
-Comprehensive visualization script for model comparison and 3D blockage detection visualization.
-"""
 import os
 import torch
 import numpy as np
@@ -19,7 +16,6 @@ from blockage_detection import CardiacDysfunctionDetector
 from utils import calculate_dice_score, calculate_iou, calculate_accuracy
 
 def load_evaluation_results():
-    """Load evaluation results if available, otherwise return None."""
     if os.path.exists("evaluation_results.json"):
         with open("evaluation_results.json", "r") as f:
             return json.load(f)
@@ -29,7 +25,6 @@ def load_evaluation_results():
     return None
 
 def create_accuracy_comparison_bar_chart(results=None):
-    """Create bar chart comparing accuracy metrics across models."""
     if results is None:
         results = load_evaluation_results()
     
@@ -103,7 +98,6 @@ def create_accuracy_comparison_bar_chart(results=None):
     plt.close()
 
 def create_blockage_rate_comparison_bar_chart(results=None):
-    """Create bar chart comparing blockage detection rates across models."""
     if results is None:
         results = load_evaluation_results()
     
@@ -203,7 +197,6 @@ def create_blockage_rate_comparison_bar_chart(results=None):
     plt.close()
 
 def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
-    """Create 3D visualizations showing original image, segmentation, and detected blockages."""
     TEST_DIR = "E:/Thesis Dataset 2/testing"
     TARGET_SHAPE = (128, 128, 64)
     
@@ -329,7 +322,6 @@ def visualize_3d_blockage_detection(model, model_name, device, num_samples=3):
             sample_count += 1
 
 def main():
-    """Main function to create all visualizations."""
     print("="*60)
     print("CREATING VISUALIZATIONS")
     print("="*60)

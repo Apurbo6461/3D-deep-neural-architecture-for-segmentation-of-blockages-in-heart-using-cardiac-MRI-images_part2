@@ -1,20 +1,3 @@
-"""
-NOR vs MINF Comparative Validation
-===================================
-Runs all 10 NOR + 10 MINF patients through the multi-evidence dysfunction
-pipeline and compares distributions of:
-  - Wall thickening (mean per patient)
-  - Ejection Fraction
-  - Suspicion score
-  - Number of impaired AHA regions
-
-If MINF consistently scores higher than NOR, this is strong evidence that
-the methodology correctly distinguishes healthy from infarcted hearts.
-
-Output:
-  - nor_vs_minf_results.csv
-  - nor_vs_minf_comparison.png
-"""
 import os, sys, glob
 
 _script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -34,10 +17,6 @@ from models.unet3d_standard import UNet3D
 from models.vnet import VNet3D
 from models.res_att_unet3d import ResAttUNet3D
 from blockage_detection import CardiacDysfunctionDetector
-
-
-# ---- helpers (same as in comprehensive_blockage_analysis) ----
-
 def _load_volume(path):
     if not os.path.exists(path):
         return None
@@ -56,9 +35,6 @@ def _resize(volume, order=1):
     factors = [t / c for t, c in zip(TARGET_SHAPE, volume.shape)]
     return zoom(volume, factors, order=order)
 
-
-# ---- main ----
-
 def main():
     TEST_DIR = "E:/Thesis Dataset 2/testing"
 
@@ -71,7 +47,7 @@ def main():
         device = "cpu"
     print(f"Using device: {device}")
 
-    # ---- Load best model (ResAtt-3D-U-Net) ----
+    #Load best model (ResAtt-3D-U-Net)
     model = ResAttUNet3D(in_channels=1, out_channels=1, base_filters=16)
     model_path = os.path.join(_script_dir, "best_resatt-3d-u-net.pth")
     if os.path.exists(model_path):
@@ -86,7 +62,7 @@ def main():
 
     detector = CardiacDysfunctionDetector(threshold_thickening=0.35, min_blockage_size=5)
 
-    # ---- Discover NOR and MINF patients ----
+    #Discover NOR and MINF patients
     patient_dirs = sorted(glob.glob(os.path.join(TEST_DIR, "patient*")))
     groups = {"NOR": [], "MINF": []}
     for p_dir in patient_dirs:
@@ -103,7 +79,7 @@ def main():
 
     print(f"\nFound {len(groups['NOR'])} NOR patients and {len(groups['MINF'])} MINF patients")
 
-    # ---- Run analysis ----
+    #Run analysis
     rows = []
     with torch.no_grad():
         for group_name, dirs in groups.items():
@@ -176,21 +152,20 @@ def main():
         flagged = (gdf['suspicion_score'] >= 2).sum()
         print(f"    Patients flagged (>=2):  {flagged}/{len(gdf)}")
 
-    # ---- Generate comparison plots ----
+    #Generate comparison plots
     _plot_comparison(df)
 
     print("\n[+] Validation complete!")
 
 
 def _plot_comparison(df):
-    """Generate box-plot and bar-chart comparisons."""
     fig, axes = plt.subplots(2, 3, figsize=(18, 11))
     fig.suptitle("NOR vs MINF — Multi-Evidence Cardiac Dysfunction Comparison",
                  fontsize=16, fontweight='bold', y=0.98)
 
     group_colors = {'NOR': '#2ecc71', 'MINF': '#e74c3c'}
 
-    # ---- 1. Wall Thickening box plot ----
+    #Wall Thickening box plot
     ax = axes[0, 0]
     data_nor = df[df['group'] == 'NOR']['mean_wall_thickening']
     data_minf = df[df['group'] == 'MINF']['mean_wall_thickening']
@@ -204,7 +179,7 @@ def _plot_comparison(df):
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3, axis='y')
 
-    # ---- 2. EF box plot ----
+    #EF box plot
     ax = axes[0, 1]
     data_nor = df[df['group'] == 'NOR']['ef_pct']
     data_minf = df[df['group'] == 'MINF']['ef_pct']
@@ -218,7 +193,7 @@ def _plot_comparison(df):
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3, axis='y')
 
-    # ---- 3. Suspicion Score box plot ----
+    # Suspicion Score box plot
     ax = axes[0, 2]
     data_nor = df[df['group'] == 'NOR']['suspicion_score']
     data_minf = df[df['group'] == 'MINF']['suspicion_score']
@@ -233,7 +208,7 @@ def _plot_comparison(df):
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3, axis='y')
 
-    # ---- 4. Impaired Regions bar chart ----
+    #Impaired Regions bar chart
     ax = axes[1, 0]
     data_nor = df[df['group'] == 'NOR']['impaired_regions']
     data_minf = df[df['group'] == 'MINF']['impaired_regions']
@@ -252,7 +227,7 @@ def _plot_comparison(df):
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
 
-    # ---- 5. Suspicion score distribution bar chart ----
+    #Suspicion score distribution bar chart
     ax = axes[1, 1]
     scores = [0, 1, 2, 3, 4]
     nor_sc = [(df[(df['group'] == 'NOR') & (df['suspicion_score'] == s)].shape[0])
@@ -273,7 +248,7 @@ def _plot_comparison(df):
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
 
-    # ---- 6. Per-patient scatter: thickening vs EF ----
+    #Per-patient scatter: thickening vs EF
     ax = axes[1, 2]
     for g in ['NOR', 'MINF']:
         gdf = df[df['group'] == g]

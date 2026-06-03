@@ -1,15 +1,3 @@
-"""
-Comprehensive Cardiac Dysfunction Detection and Segmentation Pipeline
-For thesis: "An efficient 3D deep neural architecture for segmentation of blockages 
-in heart using cardiac MRI images"
-
-This script:
-1. Performs 3D segmentation using deep neural networks
-2. Detects myocardial dysfunction (contractile impairment) using Multi-Evidence
-   Hybrid Framework (ED vs ES, AHA 6-region averaging)
-3. Identifies anatomical regions (LV, RV, Myocardial)
-4. Evaluates samples from all 5 ACDC patient groups (NOR, MINF, DCM, HCM, RV)
-"""
 import os
 import sys
 import glob

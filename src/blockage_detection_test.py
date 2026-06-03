@@ -1,8 +1,3 @@
-"""
-Blockage Detection Demo: 3 models × 5 samples each.
-Runs segmentation + blockage detection for 3D U-Net, V-Net, and ResAtt-3D-U-Net
-on 5 test samples per model, saves visualizations and a summary.
-"""
 import os
 import sys
 
@@ -22,7 +17,7 @@ import json
 from data.dataset import MedicalDataset
 from models.unet3d_standard import UNet3D
 from models.vnet import VNet3D
-from models.unet3d import ResAttUNet3D
+from models.res_att_unet3d import ResAttUNet3D
 from blockage_detection import BlockageDetector
 
 # Config

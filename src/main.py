@@ -1,7 +1,3 @@
-"""
-Main script for heart blockage detection using 3D deep learning models.
-This script provides a unified interface to train and evaluate models.
-"""
 import argparse
 import os
 import sys
