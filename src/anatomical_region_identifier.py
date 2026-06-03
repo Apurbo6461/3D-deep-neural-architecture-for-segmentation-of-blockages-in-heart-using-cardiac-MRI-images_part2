@@ -22,16 +22,6 @@ class AnatomicalRegionIdentifier:
         }
     
     def identify_regions(self, segmentation_mask, original_image=None):
-        """
-        Identify anatomical regions in the segmentation mask.
-        
-        Args:
-            segmentation_mask: Binary segmentation mask (H, W, D)
-            original_image: Original intensity image (H, W, D) for intensity-based analysis
-        
-        Returns:
-            dict: Region masks and labels
-        """
         # Convert to numpy if needed
         if hasattr(segmentation_mask, 'cpu'):
             mask = segmentation_mask.cpu().numpy()
@@ -65,9 +55,6 @@ class AnatomicalRegionIdentifier:
         return regions
     
     def _identify_heart_chambers(self, binary_mask, original_image=None):
-        """
-        Identify LV, RV, and Myocardial regions using spatial and morphological analysis.
-        """
         h, w, d = binary_mask.shape
         
         # Check if mask is empty
@@ -97,9 +84,6 @@ class AnatomicalRegionIdentifier:
             'UNKNOWN': np.zeros_like(binary_mask)
         }
         
-        # Method 1: Spatial partitioning based on anatomical knowledge
-        # In cardiac MRI, LV is typically left and central, RV is right and anterior
-        # Myocardium surrounds the LV
         
         # Find connected components
         labeled_mask, num_components = label(binary_mask > 0)
@@ -182,9 +166,6 @@ class AnatomicalRegionIdentifier:
         
         # Large chambers: LV and RV
         if size_ratio > 0.05:
-            # LV: Typically left side (negative rel_x in some conventions, or positive)
-            # RV: Typically right side
-            # In standard cardiac views, LV is often more central/left
             if rel_x < 0.4:  # Left side
                 return 'LV'
             elif rel_x > 0.6:  # Right side
@@ -206,7 +187,6 @@ class AnatomicalRegionIdentifier:
         return 'UNKNOWN'
     
     def _calculate_surface_area(self, mask):
-        """Calculate surface area of a 3D mask."""
         # Use morphological gradient to find surface
         kernel = np.ones((3, 3, 3))
         dilated = ndimage.binary_dilation(mask > 0, structure=kernel)
@@ -221,7 +201,6 @@ class AnatomicalRegionIdentifier:
         return [slice(coords[i].min(), coords[i].max() + 1) for i in range(3)]
     
     def _refine_regions(self, regions, binary_mask, original_image=None):
-        """Refine region assignments using additional heuristics."""
         # Ensure all foreground is assigned
         assigned = sum([regions[k] for k in regions.keys()])
         unassigned = binary_mask - assigned
@@ -246,16 +225,6 @@ class AnatomicalRegionIdentifier:
         return regions
     
     def identify_blockage_regions(self, blockage_mask, anatomical_regions):
-        """
-        Identify which anatomical region(s) contain blockages.
-        
-        Args:
-            blockage_mask: Binary mask of detected blockages (H, W, D)
-            anatomical_regions: Dict of region masks from identify_regions()
-        
-        Returns:
-            dict: Blockage information per region
-        """
         blockage_info = {}
         
         for region_name, region_mask in anatomical_regions.items():
